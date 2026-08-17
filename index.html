@@ -1,0 +1,3526 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Take-Home Assignment — 100 Apps Strategic Feasibility</title>
+  <meta name="description" content="Audited research and strategic evaluation of 100 SaaS applications for AI agent toolkits and MCP integration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card: #121215;
+      --card-hover: #18181c;
+      --card-subtle: #141418;
+      --border: #27272a;
+      --border-subtle: #1e1e24;
+      --border-focus: #3f3f46;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --text-faint: #52525b;
+      
+      --emerald: #10b981;
+      --emerald-bg: rgba(16, 185, 129, 0.08);
+      --emerald-border: rgba(16, 185, 129, 0.22);
+      
+      --amber: #f59e0b;
+      --amber-bg: rgba(245, 158, 11, 0.08);
+      --amber-border: rgba(245, 158, 11, 0.22);
+      
+      --rose: #f43f5e;
+      --rose-bg: rgba(244, 63, 94, 0.08);
+      --rose-border: rgba(244, 63, 94, 0.22);
+      
+      --blue: #3b82f6;
+      --blue-bg: rgba(59, 130, 246, 0.08);
+      --blue-border: rgba(59, 130, 246, 0.22);
+
+      --radius-sm: 6px;
+      --radius: 8px;
+      --radius-lg: 12px;
+      --font-sans: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    /* Top Navigation Bar */
+    header.top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .brand-logo {
+      width: 22px;
+      height: 22px;
+      background: #ffffff;
+      color: #000000;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .brand-divider { color: var(--text-dim); }
+    .brand-tag { color: var(--text-muted); font-weight: 400; }
+
+    /* Segment Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2px;
+      gap: 2px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      background: var(--border);
+      color: #ffffff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Main Area */
+    main {
+      flex: 1;
+      padding: 20px 0 48px;
+    }
+    .tab-pane { display: block; margin-bottom: 48px; }
+
+    /* Compact Above-the-fold Header */
+    .hero-compact {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-text h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .hero-text p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+    .kpi-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .kpi-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .kpi-value-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .kpi-num {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      font-family: var(--font-mono);
+      line-height: 1.1;
+    }
+    .kpi-total {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+    .kpi-sub {
+      font-size: 11px;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .kpi-bar {
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-top: 10px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* Cards & Containers */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .card-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-body { padding: 16px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Quadrants */
+    .quad-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .quad-box {
+      background: var(--card-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+    .quad-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .quad-title {
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .quad-count {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .quad-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+    .quad-pill {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      padding: 2px 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.1s ease;
+    }
+    .quad-pill:hover {
+      border-color: var(--text-dim);
+      color: var(--text);
+      background: var(--card-hover);
+    }
+
+    /* Metric progress rows */
+    .metric-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+    .metric-row:last-child { margin-bottom: 0; }
+    .metric-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+    .metric-name { color: var(--text); font-weight: 500; }
+    .metric-count { color: var(--text-muted); font-family: var(--font-mono); font-size: 11px; }
+    .bar-bg {
+      height: 4px;
+      background: var(--card-hover);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    /* Tag Badges */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .tag-ready { background: var(--emerald-bg); color: var(--emerald); border: 1px solid var(--emerald-border); }
+    .tag-limited { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+    .tag-blocked { background: var(--rose-bg); color: var(--rose); border: 1px solid var(--rose-border); }
+    .tag-free { background: var(--emerald-bg); color: var(--emerald); border: 1px solid var(--emerald-border); }
+    .tag-trial { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-border); }
+    .tag-gated { background: var(--rose-bg); color: var(--rose); border: 1px solid var(--rose-border); }
+    .tag-auth { background: var(--card-subtle); color: var(--text-muted); border: 1px solid var(--border); font-size: 10px; padding: 0 5px; margin-right: 3px; }
+    .tag-mcp-yes { color: var(--emerald); font-weight: 600; }
+    .tag-mcp-no { color: var(--text-faint); }
+
+    /* Directory Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .search-box {
+      position: relative;
+      min-width: 200px;
+      max-width: 300px;
+      flex: 1;
+    }
+    .search-input {
+      width: 100%;
+      height: 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0 10px 0 28px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text);
+      outline: none;
+    }
+    .search-input:focus { border-color: var(--text-dim); }
+    .search-icon {
+      position: absolute;
+      left: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      width: 13px;
+      height: 13px;
+      pointer-events: none;
+    }
+    .filter-select {
+      height: 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0 24px 0 8px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--text);
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+    }
+    .btn {
+      height: 32px;
+      padding: 0 10px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+    }
+    .btn:hover { background: var(--card-hover); }
+    .btn-primary { background: #ffffff; color: #000000; border-color: #ffffff; font-weight: 600; }
+    .btn-primary:hover { background: #e4e4e7; }
+
+    /* Compact Table */
+    .table-container {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+    table.data-table th {
+      background: var(--card-subtle);
+      padding: 8px 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      user-select: none;
+      white-space: nowrap;
+    }
+    table.data-table th.sortable { cursor: pointer; }
+    table.data-table th.sortable:hover { color: var(--text); }
+    table.data-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      vertical-align: middle;
+    }
+    table.data-table tbody tr {
+      transition: background-color 0.1s ease;
+      cursor: pointer;
+    }
+    table.data-table tbody tr:hover { background: var(--card-hover); }
+    table.data-table tbody tr:last-child td { border-bottom: none; }
+
+    .col-id { width: 36px; font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); }
+    .col-name { color: var(--text); font-weight: 600; white-space: nowrap; }
+    .category-chip {
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: var(--card-subtle);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Inspector Drawer */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 500px;
+      max-width: 100vw;
+      background: var(--card);
+      border-left: 1px solid var(--border);
+      z-index: 100;
+      transform: translateX(100%);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .drawer-title-row { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+    .drawer-title { font-size: 16px; font-weight: 600; color: var(--text); }
+    .drawer-close {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      cursor: pointer;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .drawer-close:hover { color: var(--text); border-color: var(--text-dim); }
+    .drawer-body {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .drawer-section { display: flex; flex-direction: column; gap: 4px; }
+    .drawer-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); }
+    .drawer-value { font-size: 12px; color: var(--text); line-height: 1.5; }
+    .drawer-code-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    /* Callouts */
+    .callout-mini {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      background: var(--card-subtle);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .callout-mini strong { color: var(--text); }
+
+    /* Audit Expandable Row */
+    .audit-detail-row {
+      display: none;
+      background: var(--card-subtle);
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-subtle);
+      line-height: 1.4;
+    }
+    .audit-detail-row.open { display: table-row; }
+    .audit-detail-cell { padding: 12px 14px !important; }
+
+    /* Footer */
+    footer.app-footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 0;
+      color: var(--text-dim);
+      font-size: 11px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-2 { grid-template-columns: 1fr; }
+      .quad-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .nav-tabs { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <header class="top-nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="brand">
+          <div class="brand-logo">A</div>
+          <span>Assignment</span>
+          <span class="brand-divider">/</span>
+          <span class="brand-tag">AI Product Ops Intern</span>
+        </a>
+
+        <!-- Navigation removed for minimalist layout -->
+
+        <div class="nav-actions">
+          <div class="badge-status">
+            <span class="status-dot"></span>
+            <span>100 Researched • 20-App Audit</span>
+          </div>
+          <button class="btn" onclick="exportData('json')">Export JSON</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+
+      <!-- ================================================================= -->
+      <!-- TAB 1: EXECUTIVE OVERVIEW -->
+      <!-- ================================================================= -->
+      <section id="tab-overview" class="tab-pane active">
+        <!-- Compact Above-the-fold Header -->
+        <div class="hero-compact">
+          <div class="hero-text">
+            <h1>100 Apps Strategic Feasibility & Toolkit Pipeline</h1>
+            <p>Evaluating 100 SaaS platforms across 10 functional domains for AI agent toolkits and MCP integrations.</p>
+          </div>
+        </div>
+
+        <!-- 4 Scannable KPI Cards -->
+        <div class="kpi-grid">
+          <!-- KPI 1: Buildability -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Buildability</span>
+              <span id="kpi-ready-badge" class="tag tag-ready">77%</span>
+            </div>
+            <div class="kpi-value-row">
+              <span id="kpi-ready-count" class="kpi-num">77</span>
+              <span class="kpi-total">/ 100 Ready</span>
+            </div>
+            <div class="kpi-sub"><span id="kpi-limited-count">14</span> Limited • <span id="kpi-blocked-count">9</span> Blocked</div>
+            <div class="kpi-bar">
+              <div id="kpi-bar-ready" style="width: 77%; background: var(--emerald);"></div>
+              <div id="kpi-bar-limited" style="width: 14%; background: var(--amber);"></div>
+              <div id="kpi-bar-blocked" style="width: 9%; background: var(--rose);"></div>
+            </div>
+          </div>
+
+          <!-- KPI 2: Self-Serve Access -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">Self-Serve Velocity</span>
+              <span id="kpi-selfserve-badge" class="tag tag-trial">81%</span>
+            </div>
+            <div class="kpi-value-row">
+              <span id="kpi-selfserve-count" class="kpi-num">81</span>
+              <span class="kpi-total">/ 100 Self-Serve</span>
+            </div>
+            <div class="kpi-sub"><span id="kpi-free-count">60</span> Free tier • <span id="kpi-trial-count">21</span> Trial sandboxes</div>
+            <div class="kpi-bar">
+              <div id="kpi-bar-free" style="width: 60%; background: var(--emerald);"></div>
+              <div id="kpi-bar-trial" style="width: 21%; background: var(--blue);"></div>
+              <div id="kpi-bar-gated" style="width: 19%; background: var(--rose);"></div>
+            </div>
+          </div>
+
+          <!-- KPI 3: OAuth 2.0 -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">OAuth 2.0 Support</span>
+              <span id="kpi-oauth-badge" class="tag tag-ready">61%</span>
+            </div>
+            <div class="kpi-value-row">
+              <span id="kpi-oauth-count" class="kpi-num">61</span>
+              <span class="kpi-total">/ 100 Apps</span>
+            </div>
+            <div class="kpi-sub">70 Static Keys/PATs • 2 OAuth 1.0a</div>
+            <div class="kpi-bar">
+              <div id="kpi-bar-oauth" style="width: 61%; background: #ffffff;"></div>
+              <div id="kpi-bar-otherauth" style="width: 39%; background: var(--card-hover);"></div>
+            </div>
+          </div>
+
+          <!-- KPI 4: MCP Surface -->
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <span class="kpi-label">MCP Ecosystem</span>
+              <span id="kpi-mcp-badge" class="tag tag-ready">78%</span>
+            </div>
+            <div class="kpi-value-row">
+              <span id="kpi-mcp-count" class="kpi-num">78</span>
+              <span class="kpi-total">/ 100 Active</span>
+            </div>
+            <div class="kpi-sub">22 Unserved greenfield opportunities</div>
+            <div class="kpi-bar">
+              <div id="kpi-bar-mcp" style="width: 78%; background: var(--amber);"></div>
+              <div id="kpi-bar-nomcp" style="width: 22%; background: var(--card-hover);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Headline: Executive Patterns & Strategic Insights -->
+        <div class="card" style="margin-bottom: 20px;">
+          <div class="card-header">
+            <div class="card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="m4 4 8 8 8-8"/></svg>
+              Executive Patterns & Strategic Insights (The 100-App Horizon)
+            </div>
+            <span class="tag tag-ready">Key Findings</span>
+          </div>
+          <div class="card-body" style="padding: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+            <div class="callout-mini">
+              <strong style="color: #ffffff; display: block; margin-bottom: 4px;">1. Auth Dominance & Migration Wave</strong>
+              <strong>OAuth 2.0 (61%)</strong> and <strong>API Keys (70%)</strong> dominate. Legacy API keys are deprecating across major players (Zendesk sunsetting basic auth tokens by April 2027; HubSpot retiring static API keys for scoped Private App tokens).
+            </div>
+            <div class="callout-mini">
+              <strong style="color: #ffffff; display: block; margin-bottom: 4px;">2. Category Friction vs Velocity</strong>
+              <strong>Developer & Infra (90%)</strong> and <strong>Communications (80%)</strong> have highest self-serve velocity. In contrast, <strong>Fintech & Enterprise CRM</strong> (DealCloud, Brex, PitchBook) gate API access behind corporate KYC or sales calls.
+            </div>
+            <div class="callout-mini">
+              <strong style="color: #ffffff; display: block; margin-bottom: 4px;">3. Integration Blockers & Quirks</strong>
+              Most common friction points: <strong>Short token TTLs</strong> (DealCloud 15-min expiry), <strong>Non-standard auth headers</strong> (ClickUp raw string token, Harvest dual headers), and <strong>Enterprise partner gating</strong> (9/100 platforms).
+            </div>
+            <div class="callout-mini">
+              <strong style="color: #ffffff; display: block; margin-bottom: 4px;">4. Toolkit Implementation Pipeline</strong>
+              <strong>56 Day-1 Wins</strong> (Free tier + public REST/GraphQL); <strong>21 Standard Sandboxes</strong> (14-30d trials); <strong>14 Gated/Narrow Wrappers</strong> (App Review needed); <strong>9 Blocked</strong> (Direct partnership required).
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Agent Methodology & Verification Progression -->
+        <div class="card" style="margin-bottom: 24px;">
+          <div class="card-header">
+            <div class="card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="M2 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="M12 18v4"/><path d="m16.24 16.24 2.83 2.83"/><path d="M18 12h4"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+              Research Agent Architecture & Verification Progression
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald);">Accuracy: 72% → 92.5%</span>
+          </div>
+          <div class="card-body" style="padding: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+            <div class="callout-mini">
+              <div style="font-weight: 600; color: var(--text); margin-bottom: 4px;">Pass 1: Broad Automated Extraction (72% Conf.)</div>
+              Python agent leveraged web search and external tools to scrape docs portals and infer API schemas. Missed token deprecations and KYC gating.
+            </div>
+            <div class="callout-mini">
+              <div style="font-weight: 600; color: var(--text); margin-bottom: 4px;">Pass 2: Multi-Step Verification Loops (88% Conf.)</div>
+              Automated DOM analysis and endpoint health-checks detected nuances: Zendesk 2027 token sunset, ClickUp header formats, and DealCloud 15m OAuth TTLs.
+            </div>
+            <div class="callout-mini">
+              <div style="font-weight: 600; color: var(--text); margin-bottom: 4px;">Pass 3: Human-in-the-Loop Audit (92.5% Audited)</div>
+              Manual spot-check of 20 representative platforms against live developer portals. Identified edge cases (fanbasis creator KYC gate, iPayX closed docs).
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- TAB 2: DIRECTORY (100 APPS) -->
+      <!-- ================================================================= -->
+      <section id="tab-directory" class="tab-pane">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <div class="search-box">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" id="search-input" class="search-input" placeholder="Search apps, auth, or blockers..." oninput="applyFilters()" />
+            </div>
+
+            <select id="filter-category" class="filter-select" onchange="applyFilters()">
+              <option value="all">All Categories (10)</option>
+              <option value="CRM & Sales">CRM & Sales (10)</option>
+              <option value="Support & Helpdesk">Support & Helpdesk (10)</option>
+              <option value="Communications & Messaging">Communications & Messaging (10)</option>
+              <option value="Marketing, Ads, Email & Social">Marketing, Ads, Email & Social (10)</option>
+              <option value="Ecommerce">Ecommerce (10)</option>
+              <option value="Data, SEO & Scraping">Data, SEO & Scraping (10)</option>
+              <option value="Developer, Infra & Data Platforms">Developer & Infra (10)</option>
+              <option value="Productivity & PM">Productivity & PM (10)</option>
+              <option value="Finance & Fintech">Finance & Fintech (10)</option>
+              <option value="AI, Research & Media-native">AI & Research (10)</option>
+            </select>
+
+            <select id="filter-verdict" class="filter-select" onchange="applyFilters()">
+              <option value="all">All Statuses (100)</option>
+              <option value="ready">Ready (<span id="opt-ready-cnt">77</span>)</option>
+              <option value="limited">Limited (<span id="opt-limited-cnt">14</span>)</option>
+              <option value="blocked">Blocked (<span id="opt-blocked-cnt">9</span>)</option>
+            </select>
+
+            <select id="filter-auth" class="filter-select" onchange="applyFilters()">
+              <option value="all">All Auth Types</option>
+              <option value="OAuth2">OAuth 2.0</option>
+              <option value="API Key">API Key / PAT</option>
+              <option value="Basic">Basic Auth</option>
+              <option value="Bot Token">Bot Token</option>
+            </select>
+
+            <select id="filter-mcp" class="filter-select" onchange="applyFilters()">
+              <option value="all">All MCP Status</option>
+              <option value="true">MCP Available (<span id="opt-mcp-cnt">26</span>)</option>
+              <option value="false">No MCP (<span id="opt-nomcp-cnt">74</span>)</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 6px;">
+            <button class="btn" onclick="exportData('csv')">Export CSV</button>
+            <button class="btn" onclick="resetFilters()">Reset</button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="sortable col-id" onclick="handleSort('id')">#</th>
+                <th class="sortable" onclick="handleSort('name')">Application</th>
+                <th class="sortable" onclick="handleSort('category')">Category</th>
+                <th>Core Function</th>
+                <th>Auth Method</th>
+                <th class="sortable" onclick="handleSort('selfServe')">Access</th>
+                <th>Protocol</th>
+                <th class="sortable" onclick="handleSort('hasMCP')">MCP</th>
+                <th class="sortable" onclick="handleSort('buildability')">Status</th>
+                <th>Docs</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- Auth & Protocol charts removed for brevity -->
+
+      <!-- ================================================================= -->
+      <!-- TAB 4: VERIFICATION AUDIT (20 APPS) -->
+      <!-- ================================================================= -->
+      <section id="tab-audit" class="tab-pane">
+        <!-- Compact Summary -->
+        <div class="card" style="margin-bottom: 12px;">
+          <div class="card-body" style="padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <div style="font-weight: 600; font-size: 13px; color: var(--text);">Representative 20-App Cross-Validation Audit</div>
+              <div style="font-size: 12px; color: var(--text-muted);">Independently verified against official vendor documentation. Click row to view detailed findings.</div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <span class="tag tag-ready">18 Pass (90%)</span>
+              <span class="tag tag-limited">1 Partial (5%)</span>
+              <span class="tag tag-blocked">1 Fail (5%)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="col-id">#</th>
+                <th>App</th>
+                <th>Category</th>
+                <th>Auth</th>
+                <th>Access</th>
+                <th>API Surface</th>
+                <th>MCP</th>
+                <th>Status</th>
+                <th>Audit Result</th>
+                <th>Official Source</th>
+              </tr>
+            </thead>
+            <tbody id="audit-table-body">
+              <!-- Populated dynamically with click-to-expand details -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Slide-Over Inspector Drawer -->
+  <div id="drawer-overlay" class="drawer-overlay" onclick="closeDrawer()"></div>
+  <aside id="drawer" class="drawer">
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title-row">
+          <h2 id="drawer-name" class="drawer-title">App Name</h2>
+          <span id="drawer-verdict-badge" class="tag tag-ready">Ready</span>
+        </div>
+        <div id="drawer-category" class="category-chip">Category</div>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="drawer-section">
+        <div class="drawer-label">Core Function</div>
+        <div id="drawer-desc" class="drawer-value">Description</div>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-label">Authentication Implementation</div>
+        <div id="drawer-auth-detail" class="drawer-code-box">Auth details...</div>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-label">Developer Access Path</div>
+        <div id="drawer-access-detail" class="drawer-value">Self-serve details...</div>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-label">API Surface & Protocols</div>
+        <div id="drawer-api-detail" class="drawer-code-box">API details...</div>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-label">MCP Status</div>
+        <div id="drawer-mcp-detail" class="drawer-value">MCP details...</div>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-label">Toolkit Assessment</div>
+        <div id="drawer-build-detail" class="drawer-value">Buildability details...</div>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-label">Identified Blocker</div>
+        <div id="drawer-blocker" class="drawer-value" style="color: var(--amber);">None</div>
+      </div>
+
+      <div style="margin-top: 8px;">
+        <a id="drawer-doc-link" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">
+          Official Developer Documentation
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>AI Product Ops Intern — 100 Apps Strategic Feasibility Engine</div>
+        <div>100 Records Schema-Validated • Reconciled August 2026</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Embedded 100-App Canonical Dataset
+    const INLINE_APPS_DATA = [
+  {
+    "id": 1,
+    "name": "Salesforce",
+    "category": "CRM & Sales",
+    "oneLiner": "Enterprise CRM platform for sales, service, and marketing automation",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 (Authorization Code w/PKCE, Client Credentials, JWT Bearer). External Client Apps recommended.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free Developer Edition available; API access requires paid plans for production. Developer sandbox is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "Comprehensive REST & SOAP APIs. 200+ object types, SOQL query language. Very broad surface.",
+    "endpointRange": "500+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent API coverage, well-documented. OAuth complexity is the main integration hurdle.",
+    "blocker": "OAuth complexity",
+    "docsUrl": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/"
+  },
+  {
+    "id": 2,
+    "name": "HubSpot",
+    "category": "CRM & Sales",
+    "oneLiner": "All-in-one CRM for marketing, sales, and customer service",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "OAuth 2.0 for multi-account apps, Private App Access Tokens for single-account. Legacy API keys retired.",
+    "selfServe": "free",
+    "selfServeDetail": "Free CRM tier includes API access. Private App tokens are self-serve. Developer account is free.",
+    "apiSurface": "REST",
+    "apiDetail": "Full REST API covering CRM, Marketing, CMS, Operations. Very broad with 100+ endpoints.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent docs, free tier, broad API. One of the easiest CRMs to build toolkits for.",
+    "blocker": "None",
+    "docsUrl": "https://developers.hubspot.com/docs/api/"
+  },
+  {
+    "id": 3,
+    "name": "Pipedrive",
+    "category": "CRM & Sales",
+    "oneLiner": "Sales CRM designed to help small teams manage deals and pipelines",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Personal API Token (via x-api-token header) or OAuth 2.0 for marketplace apps.",
+    "selfServe": "trial",
+    "selfServeDetail": "14-day free trial includes API access. Developer Sandbox available for free.",
+    "apiSurface": "REST",
+    "apiDetail": "RESTful API covering deals, persons, organizations, activities. Moderate breadth.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Well-documented, sandbox available, standard patterns. Easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://developers.pipedrive.com/docs/api/v1/"
+  },
+  {
+    "id": 4,
+    "name": "Attio",
+    "category": "CRM & Sales",
+    "oneLiner": "Modern CRM with flexible data modeling for relationship management",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "API Key (Bearer token) for single workspace, OAuth 2.0 for multi-workspace apps.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available with API access. API keys self-serve via developer settings.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API with CRUD operations on objects, lists, notes, tasks. Growing surface.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean modern API, good docs, free tier. Easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://docs.attio.com"
+  },
+  {
+    "id": 5,
+    "name": "Twenty",
+    "category": "CRM & Sales",
+    "oneLiner": "Open-source CRM with modern UI, self-hostable alternative to Salesforce",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer tokens generated in Settings \u2192 API Keys. No OAuth currently.",
+    "selfServe": "free",
+    "selfServeDetail": "Fully open-source, self-hostable. Cloud version has free tier.",
+    "apiSurface": "REST/GraphQL",
+    "apiDetail": "Both REST and GraphQL APIs. Dynamic schema based on custom objects. Core + Metadata APIs.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Open-source, dual API, good docs. Dynamic schema is a powerful feature.",
+    "blocker": "Smaller community",
+    "docsUrl": "https://twenty.com/developers"
+  },
+  {
+    "id": 6,
+    "name": "Podio",
+    "category": "CRM & Sales",
+    "oneLiner": "Flexible work management platform by Citrix with customizable workspaces",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 with server-side, client-side, app authentication, and username/password flows.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. Developer registration is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "RESTful API covering apps, items, workspaces, contacts. Moderate breadth.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Well-documented API, multiple auth flows. Aging platform but functional.",
+    "blocker": "Platform aging",
+    "docsUrl": "https://developers.podio.com"
+  },
+  {
+    "id": 7,
+    "name": "Zoho CRM",
+    "category": "CRM & Sales",
+    "oneLiner": "Full-featured CRM suite with sales automation and multichannel support",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 via Zoho API Console. Self Client option for server-to-server.",
+    "selfServe": "free",
+    "selfServeDetail": "Free Developer Edition. API access included in all plans including free tier.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v2/v7 covering modules, records, bulk operations, custom functions. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Comprehensive API, free tier, good docs. Multi-DC architecture adds slight complexity.",
+    "blocker": "Multi-DC routing",
+    "docsUrl": "https://www.zoho.com/crm/developer/docs/api/v2/"
+  },
+  {
+    "id": 8,
+    "name": "Close",
+    "category": "CRM & Sales",
+    "oneLiner": "Sales CRM with built-in calling, email, and pipeline management",
+    "auth": [
+      "Basic",
+      "OAuth2"
+    ],
+    "authDetail": "HTTP Basic Auth with API Key as username (primary). OAuth 2.0 also supported.",
+    "selfServe": "trial",
+    "selfServeDetail": "14-day free trial. API keys available under Settings \u2192 Developer.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API covering leads, contacts, activities, opportunities. Moderate breadth.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple auth (Basic), clean REST API, good docs. Easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://developer.close.com/"
+  },
+  {
+    "id": 9,
+    "name": "Copper",
+    "category": "CRM & Sales",
+    "oneLiner": "CRM designed for Google Workspace with automatic data capture",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "API Key (via X-PW-AccessToken header + email) or OAuth 2.0 (Authorization Code).",
+    "selfServe": "trial",
+    "selfServeDetail": "14-day free trial. API keys available in Settings \u2192 Integrations.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API covering people, companies, opportunities, tasks. Custom headers required.",
+    "endpointRange": "50+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Functional API with custom header requirements. Non-standard auth headers may cause friction.",
+    "blocker": "Custom header format",
+    "docsUrl": "https://developer.copper.com/"
+  },
+  {
+    "id": 10,
+    "name": "DealCloud",
+    "category": "CRM & Sales",
+    "oneLiner": "CRM and deal management platform for capital markets by Intapp",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth2 Client Credentials flow. Tokens expire every 15 minutes.",
+    "selfServe": "gated",
+    "selfServeDetail": "Enterprise-only. Requires Intapp license and Platform Manager role for API access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for deal, company, contact management. Swagger docs available per-site.",
+    "endpointRange": "50+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "Enterprise-gated, no self-serve path. Requires Intapp partnership/license.",
+    "blocker": "Enterprise-gated",
+    "docsUrl": "https://api.docs.dealcloud.com"
+  },
+  {
+    "id": 11,
+    "name": "Zendesk",
+    "category": "Support & Helpdesk",
+    "oneLiner": "Customer service platform for ticketing, messaging, and help center",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "OAuth 2.0 (recommended), API Tokens (Basic Auth, being phased out by April 2027).",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial available. API tokens self-serve in Admin Center.",
+    "apiSurface": "REST",
+    "apiDetail": "Comprehensive REST API for tickets, users, organizations, help center. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent API, broad coverage, good migration to OAuth. Easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://developer.zendesk.com/"
+  },
+  {
+    "id": 12,
+    "name": "Intercom",
+    "category": "Support & Helpdesk",
+    "oneLiner": "Customer messaging platform for sales, marketing, and support",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Access Token (Private Apps) or OAuth 2.0 (Public Apps). Bearer token in header.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial. Developer Hub access is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API covering conversations, contacts, companies, articles, data events.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Well-documented, modern API. Regional endpoints add slight complexity.",
+    "blocker": "None",
+    "docsUrl": "https://developers.intercom.com/"
+  },
+  {
+    "id": 13,
+    "name": "Freshdesk",
+    "category": "Support & Helpdesk",
+    "oneLiner": "Cloud helpdesk software for customer support ticketing",
+    "auth": [
+      "Basic"
+    ],
+    "authDetail": "HTTP Basic Authentication with API Key. No OAuth support.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available with API access. API key from profile settings.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for tickets, contacts, agents, groups, companies.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple Basic Auth, free tier, clear docs. Very easy to build.",
+    "blocker": "No OAuth",
+    "docsUrl": "https://developers.freshdesk.com/api/"
+  },
+  {
+    "id": 14,
+    "name": "Front",
+    "category": "Support & Helpdesk",
+    "oneLiner": "Shared inbox platform for team email and customer communication",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "API Tokens or OAuth 2.0 (mandatory for public integrations). Bearer auth.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial. API tokens generated in account settings.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for conversations, messages, contacts, inboxes, channels.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Good API with granular permissions. Well-documented.",
+    "blocker": "None",
+    "docsUrl": "https://dev.frontapp.com/"
+  },
+  {
+    "id": 15,
+    "name": "Pylon",
+    "category": "Support & Helpdesk",
+    "oneLiner": "B2B support platform for managing customer conversations across channels",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer token auth. API tokens created in Settings \u2192 API Tokens (Admin only).",
+    "selfServe": "gated",
+    "selfServeDetail": "No public free tier found. Requires account with admin access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for issues, accounts, contacts. Growing surface.",
+    "endpointRange": "20+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "limited",
+    "buildabilityDetail": "Limited API surface, admin-gated token creation. Newer platform.",
+    "blocker": "Limited surface, access gated",
+    "docsUrl": "https://docs.usepylon.com/"
+  },
+  {
+    "id": 16,
+    "name": "LiveAgent",
+    "category": "Support & Helpdesk",
+    "oneLiner": "All-in-one helpdesk with live chat, ticketing, and call center",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key generated in Configuration \u2192 System \u2192 API. Sent as apikey param or header.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. API key accessible in admin panel.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v3 covering tickets, agents, departments, chats.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple API key auth, swagger docs built-in. Easy to integrate.",
+    "blocker": "None",
+    "docsUrl": "https://support.liveagent.com/"
+  },
+  {
+    "id": 17,
+    "name": "Plain",
+    "category": "Support & Helpdesk",
+    "oneLiner": "Modern customer support tool built API-first with full GraphQL API",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer token auth via API keys. Generated in Settings \u2192 Machine Users.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. API keys are self-serve.",
+    "apiSurface": "GraphQL",
+    "apiDetail": "GraphQL API (same as product UI). Covers customers, threads, companies.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "API-first design, GraphQL, TypeScript SDK. Very clean for building.",
+    "blocker": "None",
+    "docsUrl": "https://docs.plain.com/"
+  },
+  {
+    "id": 18,
+    "name": "Help Scout",
+    "category": "Support & Helpdesk",
+    "oneLiner": "Customer support platform focused on email-based help desk",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "OAuth 2.0 (Auth Code or Client Credentials). Docs API uses separate API Key.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial available. App registration is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v2 for mailboxes, conversations, customers, reports.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Standard OAuth, clean REST API. Split auth between Mailbox/Docs APIs is a minor nuance.",
+    "blocker": "None",
+    "docsUrl": "https://developer.helpscout.com/"
+  },
+  {
+    "id": 19,
+    "name": "Gorgias",
+    "category": "Support & Helpdesk",
+    "oneLiner": "E-commerce focused helpdesk for managing customer support",
+    "auth": [
+      "Basic",
+      "OAuth2"
+    ],
+    "authDetail": "HTTP Basic Auth (email + API key) for private apps, OAuth2 for public apps.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial. API credentials via Settings \u2192 REST API.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API covering tickets, customers, integrations, rules.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple auth for private use, OAuth for public. E-commerce focused integrations.",
+    "blocker": "None",
+    "docsUrl": "https://developers.gorgias.com/"
+  },
+  {
+    "id": 20,
+    "name": "Gladly",
+    "category": "Support & Helpdesk",
+    "oneLiner": "Customer service platform centered on people, not tickets",
+    "auth": [
+      "Basic"
+    ],
+    "authDetail": "HTTP Basic Auth using email + API Token. Requires API User permission.",
+    "selfServe": "gated",
+    "selfServeDetail": "No free trial. Enterprise sales required. API access needs specific user permissions.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for customers, conversations, agents, tasks.",
+    "endpointRange": "50+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "limited",
+    "buildabilityDetail": "API exists but requires enterprise license and dedicated API User setup.",
+    "blocker": "Enterprise-gated",
+    "docsUrl": "https://developer.gladly.com/"
+  },
+  {
+    "id": 21,
+    "name": "Slack",
+    "category": "Communications & Messaging",
+    "oneLiner": "Business messaging platform for team communication and collaboration",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 with Bot Tokens (xoxb-) and User Tokens (xoxp-). Scoped permissions.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. App creation is self-serve via api.slack.com/apps.",
+    "apiSurface": "REST",
+    "apiDetail": "Web API (REST), Events API, Webhooks. 150+ methods. Very broad surface.",
+    "endpointRange": "150+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent docs, free tier, massive API surface. One of the best-documented APIs.",
+    "blocker": "None",
+    "docsUrl": "https://api.slack.com/"
+  },
+  {
+    "id": 22,
+    "name": "Twilio",
+    "category": "Communications & Messaging",
+    "oneLiner": "Cloud communications platform for voice, SMS, video, and email",
+    "auth": [
+      "Basic",
+      "API Key"
+    ],
+    "authDetail": "HTTP Basic Auth using Account SID + Auth Token (dev) or API Key SID + Secret (prod).",
+    "selfServe": "free",
+    "selfServeDetail": "Free trial with credits. Self-serve signup with phone verification.",
+    "apiSurface": "REST",
+    "apiDetail": "REST APIs for SMS, Voice, Video, Verify, Lookup. Very broad across products.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Best-in-class docs, SDKs in 7+ languages, free trial. Excellent for building.",
+    "blocker": "None",
+    "docsUrl": "https://www.twilio.com/docs/usage/api"
+  },
+  {
+    "id": 23,
+    "name": "Zoho Cliq",
+    "category": "Communications & Messaging",
+    "oneLiner": "Team messaging and collaboration tool in the Zoho ecosystem",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 via Zoho API Console.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available with Zoho ecosystem.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for channels, messages, bots, widgets.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Standard Zoho OAuth pattern. Moderate API surface.",
+    "blocker": "Niche audience",
+    "docsUrl": "https://cliq.zoho.com/api/v3"
+  },
+  {
+    "id": 24,
+    "name": "Lark (Larksuite)",
+    "category": "Communications & Messaging",
+    "oneLiner": "Enterprise collaboration platform by ByteDance with chat, docs, and meetings",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Multi-token system: app_access_token, tenant_access_token, user_access_token (via OAuth).",
+    "selfServe": "free",
+    "selfServeDetail": "Free developer account. App creation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API covering messages, calendar, docs, sheets, bots. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Very broad API, free access. Multi-token complexity requires careful implementation.",
+    "blocker": "Multi-token complexity",
+    "docsUrl": "https://open.larksuite.com/"
+  },
+  {
+    "id": 25,
+    "name": "Pumble",
+    "category": "Communications & Messaging",
+    "oneLiner": "Free team messaging app alternative to Slack by CAKE.com",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Keys generated via Pumble workspace addon. App tokens for advanced integrations.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. API addon installation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for messages, channels. Limited surface compared to Slack.",
+    "endpointRange": "20+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "limited",
+    "buildabilityDetail": "Limited API surface and documentation. Node SDK available but community is small.",
+    "blocker": "Limited API surface",
+    "docsUrl": "https://pumble.com/help/integrations/"
+  },
+  {
+    "id": 26,
+    "name": "Discord",
+    "category": "Communications & Messaging",
+    "oneLiner": "Community platform for voice, video, and text communication",
+    "auth": [
+      "OAuth2",
+      "Bot Token"
+    ],
+    "authDetail": "Bot Token (Authorization: Bot <token>) or OAuth2 Bearer for user-delegated access.",
+    "selfServe": "free",
+    "selfServeDetail": "Fully free. Developer Portal access is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for guilds, channels, messages, users. Broad surface with Gateway/WebSocket.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Extensive API, free access, huge community. Rate limits are the main concern.",
+    "blocker": "Rate limits",
+    "docsUrl": "https://discord.com/developers/docs/"
+  },
+  {
+    "id": 27,
+    "name": "Telegram",
+    "category": "Communications & Messaging",
+    "oneLiner": "Cloud-based messaging platform with focus on speed and security",
+    "auth": [
+      "Bot Token"
+    ],
+    "authDetail": "Token-based auth via BotFather. Token embedded directly in API URL path.",
+    "selfServe": "free",
+    "selfServeDetail": "Completely free. No registration required beyond creating a bot via BotFather.",
+    "apiSurface": "REST",
+    "apiDetail": "HTTP Bot API with methods for messages, inline queries, payments, games.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simplest auth possible (token in URL). Free, no rate limits for normal use. Excellent.",
+    "blocker": "None",
+    "docsUrl": "https://core.telegram.org/bots/api"
+  },
+  {
+    "id": 28,
+    "name": "WhatsApp Business",
+    "category": "Communications & Messaging",
+    "oneLiner": "Business messaging platform by Meta for customer engagement",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth-based Bearer tokens via Meta Graph API. System User tokens for production.",
+    "selfServe": "free",
+    "selfServeDetail": "Free to start via Meta Developer account. Production requires business verification.",
+    "apiSurface": "REST",
+    "apiDetail": "Cloud API via Meta Graph API. Messages, templates, media, business profiles.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Good docs via Meta, free Cloud API. Business verification is the main friction.",
+    "blocker": "Business verification",
+    "docsUrl": "https://developers.facebook.com/docs/whatsapp"
+  },
+  {
+    "id": 29,
+    "name": "Aircall",
+    "category": "Communications & Messaging",
+    "oneLiner": "Cloud-based phone system for sales and support teams",
+    "auth": [
+      "Basic",
+      "OAuth2"
+    ],
+    "authDetail": "Basic Auth (API ID + Token) for private, OAuth 2.0 for public integrations.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial available. API credentials via Dashboard.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for calls, contacts, users, teams, numbers.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Dual auth options, clean REST API. Good documentation.",
+    "blocker": "None",
+    "docsUrl": "https://developer.aircall.io/"
+  },
+  {
+    "id": 30,
+    "name": "Vonage",
+    "category": "Communications & Messaging",
+    "oneLiner": "Cloud communications platform for voice, video, SMS, and verification",
+    "auth": [
+      "Basic",
+      "JWT",
+      "OAuth2"
+    ],
+    "authDetail": "API Key + Secret (Basic), JWT for Conversation API, OAuth/OIDC for network APIs.",
+    "selfServe": "free",
+    "selfServeDetail": "Free trial with credits. Self-serve developer signup.",
+    "apiSurface": "REST",
+    "apiDetail": "REST APIs for SMS, Voice, Video, Verify, Conversations. Multiple product APIs.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad API surface, multiple auth methods. Good SDKs and documentation.",
+    "blocker": "Auth complexity across products",
+    "docsUrl": "https://developer.vonage.com/"
+  },
+  {
+    "id": 31,
+    "name": "Google Ads",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Online advertising platform for search, display, video, and shopping ads",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 (Service Account or User-based) + Developer Token required.",
+    "selfServe": "free",
+    "selfServeDetail": "Free API access but requires Developer Token (basic access self-serve, standard requires review).",
+    "apiSurface": "REST/gRPC",
+    "apiDetail": "REST and gRPC APIs for campaign, ad group, keyword, and reporting management.",
+    "endpointRange": "200+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad API but complex. Developer Token + OAuth creates dual-gating friction.",
+    "blocker": "Developer Token approval",
+    "docsUrl": "https://developers.google.com/google-ads/api/docs/"
+  },
+  {
+    "id": 32,
+    "name": "Meta Ads",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Advertising API for Facebook, Instagram, and Meta properties",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 via Graph API. System User tokens for server-to-server. App Review required.",
+    "selfServe": "free",
+    "selfServeDetail": "Free developer access. Advanced permissions require App Review.",
+    "apiSurface": "REST",
+    "apiDetail": "Marketing API via Graph API. Campaigns, ad sets, ads, insights, audiences.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Massive API but App Review creates friction for advanced permissions.",
+    "blocker": "App Review for permissions",
+    "docsUrl": "https://developers.facebook.com/docs/marketing-apis"
+  },
+  {
+    "id": 33,
+    "name": "LinkedIn Ads",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Professional advertising platform for B2B marketing on LinkedIn",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 Authorization Code Flow. Application review required for ad API access.",
+    "selfServe": "gated",
+    "selfServeDetail": "API access requires application review via LinkedIn Developer Portal. Not instant.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for campaigns, creatives, analytics, audience management.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "API access requires application approval. Review process can be slow.",
+    "blocker": "Application review required",
+    "docsUrl": "https://learn.microsoft.com/linkedin/marketing"
+  },
+  {
+    "id": 34,
+    "name": "GoHighLevel",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "All-in-one marketing platform for agencies with CRM, funnels, and automation",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "OAuth 2.0 for marketplace apps. Legacy API keys being phased out.",
+    "selfServe": "trial",
+    "selfServeDetail": "14-day free trial. Developer marketplace access is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v2 for contacts, calendars, opportunities, funnels.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Growing API surface, active developer ecosystem. Auth transition in progress.",
+    "blocker": "Auth method transition",
+    "docsUrl": "https://highlevel.stoplight.io/"
+  },
+  {
+    "id": 35,
+    "name": "Mailchimp",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Email marketing and automation platform for newsletters and campaigns",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "API Key for self-managed, OAuth 2.0 for third-party integrations accessing other accounts.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available with API access. API key self-serve via Account Settings.",
+    "apiSurface": "REST",
+    "apiDetail": "Marketing API for campaigns, lists, audiences, templates, reports.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple API key auth, free tier, excellent docs. Very easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://mailchimp.com/developer/marketing/"
+  },
+  {
+    "id": 36,
+    "name": "Klaviyo",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Marketing automation platform for email and SMS in e-commerce",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Private API Key (server-side), Public API Key (client-side), OAuth for third-party apps.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan up to 250 contacts with API access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for profiles, lists, segments, campaigns, flows, metrics.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean API, free tier, good docs. Well-suited for e-commerce agent toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://developers.klaviyo.com/"
+  },
+  {
+    "id": 37,
+    "name": "systeme.io",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "All-in-one marketing platform for funnels, email, courses, and sales",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Public API Key generated in account Settings \u2192 MCP & API Keys.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available with API access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for contacts, tags, custom fields. Limited surface.",
+    "endpointRange": "10+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "Very limited API surface. Only contacts/tags management.",
+    "blocker": "Very limited API",
+    "docsUrl": "https://support.systeme.io/"
+  },
+  {
+    "id": 38,
+    "name": "Pinterest",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Visual discovery platform for inspiration, shopping, and ideas",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 Authorization Code Flow. Sandbox environment available.",
+    "selfServe": "free",
+    "selfServeDetail": "Developer account is free. App submission required for production.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v5 for pins, boards, media, ads, analytics.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Standard OAuth, sandbox for testing, Python SDK. App review for production.",
+    "blocker": "App review for production",
+    "docsUrl": "https://developers.pinterest.com/"
+  },
+  {
+    "id": 39,
+    "name": "Threads (Meta)",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Text-based social platform by Meta for short-form content",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 via Threads User Access Tokens. App Review required for production.",
+    "selfServe": "free",
+    "selfServeDetail": "Free developer access via Meta for Developers. App Review needed.",
+    "apiSurface": "REST",
+    "apiDetail": "Graph API for publishing, insights, replies. Limited compared to Instagram.",
+    "endpointRange": "20+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "Newer API with limited surface. App Review adds friction.",
+    "blocker": "App Review, limited API",
+    "docsUrl": "https://developers.facebook.com/docs/threads/"
+  },
+  {
+    "id": 40,
+    "name": "SendGrid",
+    "category": "Marketing, Ads, Email & Social",
+    "oneLiner": "Cloud-based email delivery platform by Twilio for transactional and marketing email",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key in Authorization: Bearer header. Basic auth deprecated.",
+    "selfServe": "free",
+    "selfServeDetail": "Free tier with 100 emails/day. API key generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v3 for sending, templates, contacts, campaigns, statistics.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple API key auth, free tier, excellent Twilio docs. Very easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://docs.sendgrid.com/api-reference"
+  },
+  {
+    "id": 41,
+    "name": "Shopify",
+    "category": "Ecommerce",
+    "oneLiner": "E-commerce platform for building online stores and managing retail",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 with access tokens and scopes. Session Tokens (JWT) for embedded apps.",
+    "selfServe": "free",
+    "selfServeDetail": "Free developer account and partner program. No cost for development stores.",
+    "apiSurface": "REST/GraphQL",
+    "apiDetail": "Admin API (REST & GraphQL), Storefront API (GraphQL). Products, orders, customers, inventory.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent docs, free dev stores, dual APIs. Best-in-class e-commerce API.",
+    "blocker": "None",
+    "docsUrl": "https://shopify.dev/docs/api"
+  },
+  {
+    "id": 42,
+    "name": "WooCommerce",
+    "category": "Ecommerce",
+    "oneLiner": "Open-source e-commerce plugin for WordPress",
+    "auth": [
+      "Basic",
+      "OAuth"
+    ],
+    "authDetail": "Consumer Key/Secret via Basic Auth. Also supports OAuth 1.0a.",
+    "selfServe": "free",
+    "selfServeDetail": "Free and open-source. API keys generated in WP admin panel.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for products, orders, customers, coupons, reports.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Open-source, simple auth, broad surface. Self-hosted nature requires per-store setup.",
+    "blocker": "Per-store configuration",
+    "docsUrl": "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+  },
+  {
+    "id": 43,
+    "name": "BigCommerce",
+    "category": "Ecommerce",
+    "oneLiner": "SaaS e-commerce platform for enterprise online selling",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "OAuth 2.0 for apps. Store-level API keys with X-Auth-Token header.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial. Developer sandbox available via partner program.",
+    "apiSurface": "REST/GraphQL",
+    "apiDetail": "REST and GraphQL APIs for catalog, orders, customers, payments.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad API, dual format support. Good partner/developer program.",
+    "blocker": "None",
+    "docsUrl": "https://developer.bigcommerce.com/"
+  },
+  {
+    "id": 44,
+    "name": "Salesforce Commerce Cloud",
+    "category": "Ecommerce",
+    "oneLiner": "Enterprise e-commerce platform by Salesforce for B2C and B2B",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 with Bearer tokens via Account Manager or SLAS.",
+    "selfServe": "gated",
+    "selfServeDetail": "Enterprise license required. No free tier or self-serve dev environment.",
+    "apiSurface": "REST",
+    "apiDetail": "REST APIs for products, categories, orders, customers. OCAPI and SCAPI.",
+    "endpointRange": "100+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "Enterprise-gated, complex auth. Requires Salesforce partnership.",
+    "blocker": "Enterprise license required",
+    "docsUrl": "https://developer.salesforce.com/docs/commerce"
+  },
+  {
+    "id": 45,
+    "name": "Magento (Adobe Commerce)",
+    "category": "Ecommerce",
+    "oneLiner": "Open-source e-commerce platform by Adobe for mid-to-large retailers",
+    "auth": [
+      "OAuth",
+      "Token",
+      "Basic"
+    ],
+    "authDetail": "OAuth 1.0a for integrations, Bearer Tokens, Admin credentials.",
+    "selfServe": "free",
+    "selfServeDetail": "Open-source (Magento OS) is free. Adobe Commerce requires license.",
+    "apiSurface": "REST/GraphQL",
+    "apiDetail": "REST and GraphQL APIs for catalog, cart, customers, orders.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad API, open-source option. Complex setup but powerful.",
+    "blocker": "Complex infrastructure",
+    "docsUrl": "https://developer.adobe.com/commerce/"
+  },
+  {
+    "id": 46,
+    "name": "Squarespace",
+    "category": "Ecommerce",
+    "oneLiner": "Website builder with integrated e-commerce and design tools",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "API Keys (site-specific) or OAuth 2.0 for public apps. Bearer token auth.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial for sites. Developer access via Squarespace developer settings.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for products, orders, inventory, profiles.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean API, site-specific scoping. Good for building commerce integrations.",
+    "blocker": "None",
+    "docsUrl": "https://developers.squarespace.com/"
+  },
+  {
+    "id": 47,
+    "name": "Ecwid",
+    "category": "Ecommerce",
+    "oneLiner": "Lightweight e-commerce platform that integrates into any website",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "OAuth 2.0 for public apps, Custom App tokens for store owners.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. Custom app tokens self-serve from dashboard.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for products, orders, customers, categories.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple custom app tokens for quick integration. Good docs.",
+    "blocker": "None",
+    "docsUrl": "https://api-docs.ecwid.com/"
+  },
+  {
+    "id": 48,
+    "name": "Gumroad",
+    "category": "Ecommerce",
+    "oneLiner": "Simple e-commerce platform for creators to sell digital products",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Access token via OAuth 2.0 or manual generation in Advanced Settings.",
+    "selfServe": "free",
+    "selfServeDetail": "Free to use (takes transaction fee). Token generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for products, sales, subscribers, offers. Limited surface.",
+    "endpointRange": "20+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple API, free access. Limited surface but covers core use cases.",
+    "blocker": "Limited API surface",
+    "docsUrl": "https://gumroad.com/api"
+  },
+  {
+    "id": 49,
+    "name": "Amazon Selling Partner",
+    "category": "Ecommerce",
+    "oneLiner": "Amazon's API for marketplace sellers and third-party integrations",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "Login with Amazon (LWA) OAuth 2.0. Roles-based access with architecture review.",
+    "selfServe": "gated",
+    "selfServeDetail": "Requires Amazon Seller/Developer registration. Public apps need architecture review.",
+    "apiSurface": "REST",
+    "apiDetail": "REST APIs for orders, catalog, fulfillment, reports, finances. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "limited",
+    "buildabilityDetail": "Broad API but complex registration and review process. Role-based gating.",
+    "blocker": "Architecture review, complex registration",
+    "docsUrl": "https://developer-docs.amazon.com/sp-api/"
+  },
+  {
+    "id": 50,
+    "name": "fanbasis",
+    "category": "Ecommerce",
+    "oneLiner": "Operating system for high-ticket digital businesses and creator commerce",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key authentication. Checkout SDK available for Node.js.",
+    "selfServe": "gated",
+    "selfServeDetail": "Requires creator account with KYC verification. Not fully self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API via Checkout SDK for checkout sessions. Limited public documentation.",
+    "endpointRange": "10+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "Very limited public API docs. KYC-gated. Mainly SDK-driven integration.",
+    "blocker": "Limited docs, KYC-gated",
+    "docsUrl": "https://www.fanbasis.com"
+  },
+  {
+    "id": 51,
+    "name": "DataForSEO",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "SEO data API provider for SERP, keyword, and backlink data",
+    "auth": [
+      "Basic"
+    ],
+    "authDetail": "HTTP Basic Authentication with API login + password (Base64 encoded).",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial with credits. Self-serve signup.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for SERP, Keywords, Backlinks, Domain Analytics, Content. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple auth, massive data surface, good docs. Excellent for SEO agent toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://docs.dataforseo.com/"
+  },
+  {
+    "id": 52,
+    "name": "SE Ranking",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "All-in-one SEO platform for rank tracking, audits, and competitor analysis",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API key via Authorization: Token header or apikey query parameter.",
+    "selfServe": "trial",
+    "selfServeDetail": "14-day free trial. API key in account settings.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for projects, rankings, audits, competitors.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple token auth, moderate surface. Good for SEO workflows.",
+    "blocker": "None",
+    "docsUrl": "https://seranking.com/api/"
+  },
+  {
+    "id": 53,
+    "name": "Ahrefs",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "SEO toolset for backlink analysis, keyword research, and site audits",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Bearer Token for enterprise, OAuth 2.0 Authorization Code for third-party.",
+    "selfServe": "gated",
+    "selfServeDetail": "API access requires paid enterprise plan. No free API access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for site explorer, keywords explorer, content explorer.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "Powerful data but API gated behind enterprise plans. High cost barrier.",
+    "blocker": "Enterprise-only API access",
+    "docsUrl": "https://ahrefs.com/api"
+  },
+  {
+    "id": 54,
+    "name": "MrScraper",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "Web scraping API service for data extraction",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key passed in request headers (typically Bearer or X-API-KEY).",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial available. API key from dashboard.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for scraping jobs, results extraction.",
+    "endpointRange": "10+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple API key auth, focused surface. Good for scraping toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://docs.mrscraper.com/"
+  },
+  {
+    "id": 55,
+    "name": "Apify",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "Web scraping and automation platform with actor marketplace",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer token via Authorization header. Token from Console \u2192 Settings \u2192 API.",
+    "selfServe": "free",
+    "selfServeDetail": "Free tier available with monthly credits. Self-serve signup.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for actors, runs, datasets, key-value stores, webhooks. Broad.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent docs, free tier, huge actor marketplace. Perfect for scraping toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://docs.apify.com/api"
+  },
+  {
+    "id": 56,
+    "name": "Firecrawl",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "Web scraping API that converts websites to LLM-ready markdown",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer token: Authorization: Bearer fc-YOUR_API_KEY.",
+    "selfServe": "free",
+    "selfServeDetail": "Free tier with 500 credits/month. Self-serve signup.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for scraping, crawling, mapping, extracting.",
+    "endpointRange": "10+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple API, free tier, purpose-built for AI/LLM workflows. Excellent fit.",
+    "blocker": "None",
+    "docsUrl": "https://docs.firecrawl.dev/"
+  },
+  {
+    "id": 57,
+    "name": "Bright Data",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "Web data platform with proxy network and data collection tools",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Tokens (Bearer) for management APIs. Proxy credentials for proxy network.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial available. Self-serve signup with credit card.",
+    "apiSurface": "REST",
+    "apiDetail": "REST APIs for data collection, proxy management, web unlocker.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad data platform, multiple products. Proxy-based approach adds complexity.",
+    "blocker": "Proxy complexity",
+    "docsUrl": "https://docs.brightdata.com"
+  },
+  {
+    "id": 58,
+    "name": "Sherlock",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "Open-source OSINT tool for finding usernames across social networks",
+    "auth": [
+      "None"
+    ],
+    "authDetail": "CLI tool - no API authentication. Runs locally via Python.",
+    "selfServe": "free",
+    "selfServeDetail": "Fully open-source and free. Install via pip.",
+    "apiSurface": "CLI",
+    "apiDetail": "Command-line tool, not a REST API. Python library can be imported.",
+    "endpointRange": "0",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "CLI tool, not a web API. Would need to wrap as a local tool/subprocess.",
+    "blocker": "Not a web API",
+    "docsUrl": "https://github.com/sherlock-project/sherlock"
+  },
+  {
+    "id": 59,
+    "name": "Waterfall.io",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "Contact and company intelligence platform for go-to-market teams",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer Token authentication. API key in Authorization header.",
+    "selfServe": "gated",
+    "selfServeDetail": "Requires account approval. Contact sales for access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for contact/company data enrichment. Limited public documentation.",
+    "endpointRange": "10+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "Sales-gated access, limited public API documentation.",
+    "blocker": "Sales-gated",
+    "docsUrl": "https://waterfall.io"
+  },
+  {
+    "id": 60,
+    "name": "Clay",
+    "category": "Data, SEO & Scraping",
+    "oneLiner": "Data enrichment and workflow automation platform for go-to-market teams",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key from Settings \u2192 Profile. HTTP API integration supports various auth methods.",
+    "selfServe": "trial",
+    "selfServeDetail": "Free trial available. API key is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for tables, rows, enrichments. Also HTTP API integration for external calls.",
+    "endpointRange": "20+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "API key auth, good workflow automation. More of an integration platform itself.",
+    "blocker": "None",
+    "docsUrl": "https://docs.clay.com"
+  },
+  {
+    "id": 61,
+    "name": "GitHub",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Code hosting and collaboration platform for version control and CI/CD",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Personal Access Tokens (classic/fine-grained), GitHub App tokens, GITHUB_TOKEN for Actions.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan with full API access. Token generation is self-serve.",
+    "apiSurface": "REST/GraphQL",
+    "apiDetail": "REST API v3 and GraphQL API v4. Repos, issues, PRs, actions, packages. Massive surface.",
+    "endpointRange": "500+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Best-documented API in existence. Free, broad, massive ecosystem. Gold standard.",
+    "blocker": "None",
+    "docsUrl": "https://docs.github.com/rest"
+  },
+  {
+    "id": 62,
+    "name": "Vercel",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Frontend cloud platform for deploying web applications",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Vercel Access Tokens (Bearer). OIDC tokens for zero-config in deployments.",
+    "selfServe": "free",
+    "selfServeDetail": "Free Hobby plan with API access. Token generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for deployments, projects, domains, environment variables.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple token auth, free tier, clean API. Well-suited for dev toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://vercel.com/docs/rest-api"
+  },
+  {
+    "id": 63,
+    "name": "Netlify",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Platform for deploying and managing modern web projects",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Personal Access Tokens (Bearer) or OAuth 2.0.",
+    "selfServe": "free",
+    "selfServeDetail": "Free Starter plan. PAT generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for sites, deploys, builds, forms, DNS.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple auth, free tier, good documentation.",
+    "blocker": "None",
+    "docsUrl": "https://docs.netlify.com/api/"
+  },
+  {
+    "id": 64,
+    "name": "Cloudflare",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Web infrastructure and security company providing CDN, DNS, and DDoS protection",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Scoped API Tokens (recommended, Bearer) or Global API Key (legacy).",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan with API access. Token management is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for zones, DNS, firewall, workers, R2, pages. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Massive API surface, free tier, scoped tokens. Excellent for building.",
+    "blocker": "None",
+    "docsUrl": "https://developers.cloudflare.com/api/"
+  },
+  {
+    "id": 65,
+    "name": "Supabase",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Open-source Firebase alternative with PostgreSQL, Auth, and Storage",
+    "auth": [
+      "API Key",
+      "JWT"
+    ],
+    "authDetail": "API Keys for data access, JWTs via Supabase Auth for user-specific access.",
+    "selfServe": "free",
+    "selfServeDetail": "Free tier with 2 projects. API keys are self-serve.",
+    "apiSurface": "REST/GraphQL",
+    "apiDetail": "Auto-generated REST API (PostgREST), Auth API, Storage API, Edge Functions.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent developer experience, free tier, auto-generated APIs. Perfect fit.",
+    "blocker": "None",
+    "docsUrl": "https://supabase.com/docs"
+  },
+  {
+    "id": 66,
+    "name": "Neo4j",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Graph database platform for connected data and knowledge graphs",
+    "auth": [
+      "Basic",
+      "OAuth2"
+    ],
+    "authDetail": "Basic Auth (username:password) or OAuth2 Bearer tokens for Aura (cloud).",
+    "selfServe": "free",
+    "selfServeDetail": "Free Aura instance available. Community edition is free.",
+    "apiSurface": "REST",
+    "apiDetail": "HTTP API for Cypher queries, transactions, discovery. Bolt protocol for drivers.",
+    "endpointRange": "20+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple auth, free cloud instance. Cypher query language is the main learning curve.",
+    "blocker": "Cypher learning curve",
+    "docsUrl": "https://neo4j.com/docs/http-api/"
+  },
+  {
+    "id": 67,
+    "name": "Snowflake",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Cloud data platform for data warehousing, analytics, and data sharing",
+    "auth": [
+      "OAuth2",
+      "Key Pair"
+    ],
+    "authDetail": "OAuth 2.0, Key-Pair (RSA JWT), or Programmatic Access Tokens (PAT).",
+    "selfServe": "trial",
+    "selfServeDetail": "Free 30-day trial. Self-serve signup.",
+    "apiSurface": "REST",
+    "apiDetail": "SQL API for running queries, Snowpark APIs, Snowpipe for ingestion.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Powerful platform but auth complexity with key-pair. Good for data agent toolkits.",
+    "blocker": "Auth complexity",
+    "docsUrl": "https://docs.snowflake.com"
+  },
+  {
+    "id": 68,
+    "name": "MongoDB Atlas",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Cloud-hosted MongoDB service with automated operations",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Service Accounts (OAuth 2.0) recommended. Legacy API Keys with HTTP Digest Auth.",
+    "selfServe": "free",
+    "selfServeDetail": "Free M0 cluster available. API access is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "Admin API for clusters, users, orgs. Data API for CRUD operations.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Free tier, transitioning to OAuth service accounts. Good documentation.",
+    "blocker": "None",
+    "docsUrl": "https://www.mongodb.com/docs/atlas/api/"
+  },
+  {
+    "id": 69,
+    "name": "Datadog",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Cloud monitoring and security platform for infrastructure and applications",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Dual-key: DD-API-KEY + DD-APPLICATION-KEY headers. Also PATs, SATs, OAuth.",
+    "selfServe": "trial",
+    "selfServeDetail": "14-day free trial. API keys self-serve in dashboard.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for metrics, dashboards, monitors, logs, events. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad API, dual-key auth is simple. Good for monitoring agent toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://docs.datadoghq.com/api/"
+  },
+  {
+    "id": 70,
+    "name": "Sentry",
+    "category": "Developer, Infra & Data Platforms",
+    "oneLiner": "Application monitoring platform for error tracking and performance",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer Auth Token. Don't confuse with DSN (for SDK event ingestion).",
+    "selfServe": "free",
+    "selfServeDetail": "Free Developer plan with API access. Token generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for projects, issues, events, releases, organizations.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple auth, free tier, good docs. Useful for developer agent toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://docs.sentry.io/api/"
+  },
+  {
+    "id": 71,
+    "name": "Notion",
+    "category": "Productivity & PM",
+    "oneLiner": "All-in-one workspace for notes, docs, wikis, and project management",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Internal Integration Token (Bearer) or OAuth 2.0 for public integrations.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan with API access. Integration creation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for pages, databases, blocks, search, comments, users.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean API, free tier, official MCP. Great for productivity agent toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://developers.notion.com/"
+  },
+  {
+    "id": 72,
+    "name": "Airtable",
+    "category": "Productivity & PM",
+    "oneLiner": "Spreadsheet-database hybrid for flexible data management",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Personal Access Tokens (PATs, replacing legacy API keys) or OAuth 2.0.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan with API access. PAT generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for bases, tables, records, fields, views.",
+    "endpointRange": "50+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple PAT auth, free tier, clean docs. Very easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://airtable.com/developers"
+  },
+  {
+    "id": 73,
+    "name": "Linear",
+    "category": "Productivity & PM",
+    "oneLiner": "Streamlined project management and issue tracking for software teams",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Personal API Key or OAuth 2.0. GraphQL API.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan with API access. Key generation is self-serve.",
+    "apiSurface": "GraphQL",
+    "apiDetail": "GraphQL API for issues, projects, cycles, teams, comments.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean GraphQL API, free tier. Excellent developer experience.",
+    "blocker": "None",
+    "docsUrl": "https://developers.linear.app/"
+  },
+  {
+    "id": 74,
+    "name": "Jira",
+    "category": "Productivity & PM",
+    "oneLiner": "Project management and issue tracking platform by Atlassian",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "API Token (Basic Auth) for Cloud. PATs or OAuth for Data Center/Server.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan for up to 10 users. API token generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for issues, projects, boards, sprints, users. Very broad.",
+    "endpointRange": "200+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Massive API surface, free tier. Complexity from Cloud vs Server/DC differences.",
+    "blocker": "Cloud/DC fragmentation",
+    "docsUrl": "https://developer.atlassian.com/"
+  },
+  {
+    "id": 75,
+    "name": "Asana",
+    "category": "Productivity & PM",
+    "oneLiner": "Work management platform for team tasks and project tracking",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Personal Access Token (Bearer) or OAuth 2.0.",
+    "selfServe": "free",
+    "selfServeDetail": "Free Basic plan. PAT generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for tasks, projects, workspaces, portfolios, goals.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean REST API, free tier, good docs. Standard integration path.",
+    "blocker": "None",
+    "docsUrl": "https://developers.asana.com/"
+  },
+  {
+    "id": 76,
+    "name": "Monday.com",
+    "category": "Productivity & PM",
+    "oneLiner": "Work OS platform for managing projects, workflows, and team collaboration",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Personal API Token (no Bearer prefix) or OAuth 2.0 (Bearer prefix).",
+    "selfServe": "free",
+    "selfServeDetail": "Free Individual plan. API token from admin section.",
+    "apiSurface": "GraphQL",
+    "apiDetail": "GraphQL API (v2) for boards, items, columns, groups, updates.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "GraphQL API, free tier. Non-standard token format is a minor nuance.",
+    "blocker": "Non-standard token header",
+    "docsUrl": "https://developer.monday.com/"
+  },
+  {
+    "id": 77,
+    "name": "ClickUp",
+    "category": "Productivity & PM",
+    "oneLiner": "Productivity platform for tasks, docs, goals, and whiteboards",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Personal API Token (no Bearer prefix, raw string) or OAuth 2.0.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. API token from Settings \u2192 Apps.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v2 for tasks, spaces, folders, lists, goals, time tracking.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad API, free tier. Non-standard auth header is a minor friction.",
+    "blocker": "Non-standard auth header",
+    "docsUrl": "https://clickup.com/api/"
+  },
+  {
+    "id": 78,
+    "name": "Coda",
+    "category": "Productivity & PM",
+    "oneLiner": "Document platform that combines docs, spreadsheets, and apps",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Bearer Token or OAuth 2.0 for public integrations.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan with API access. Token generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for docs, tables, rows, formulas, automations.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean API, free tier, good developer portal. Easy to build.",
+    "blocker": "None",
+    "docsUrl": "https://coda.io/developers"
+  },
+  {
+    "id": 79,
+    "name": "Smartsheet",
+    "category": "Productivity & PM",
+    "oneLiner": "Enterprise work management platform for sheets, reports, and dashboards",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Personal Access Tokens (PATs, non-expiring) or OAuth 2.0.",
+    "selfServe": "trial",
+    "selfServeDetail": "30-day free trial. PAT generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for sheets, rows, columns, reports, workspaces.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Standard REST API, non-expiring PATs. Good documentation.",
+    "blocker": "None",
+    "docsUrl": "https://smartsheet-platform.github.io/api-docs/"
+  },
+  {
+    "id": 80,
+    "name": "Harvest",
+    "category": "Productivity & PM",
+    "oneLiner": "Time tracking and invoicing tool for teams and freelancers",
+    "auth": [
+      "OAuth2",
+      "API Key"
+    ],
+    "authDetail": "Bearer Token (PAT or OAuth). Requires Harvest-Account-Id and User-Agent headers.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan for 1 user. PAT from Harvest ID Developers page.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v2 for time entries, projects, clients, invoices, expenses.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Clean API, free tier. Required custom headers (Account-Id, User-Agent) add mild friction.",
+    "blocker": "Custom required headers",
+    "docsUrl": "https://help.getharvest.com/api-v2/"
+  },
+  {
+    "id": 81,
+    "name": "Stripe",
+    "category": "Finance & Fintech",
+    "oneLiner": "Payment processing platform for online businesses",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "API Keys (Secret sk_, Restricted rk_). OAuth for platforms/Connect.",
+    "selfServe": "free",
+    "selfServeDetail": "Free to create account. No monthly fee (pay-per-transaction). Instant API access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for payments, customers, subscriptions, invoices, payouts. Very broad.",
+    "endpointRange": "300+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Gold standard for payment APIs. Excellent docs, SDKs, free to start. Easy.",
+    "blocker": "None",
+    "docsUrl": "https://stripe.com/docs/api"
+  },
+  {
+    "id": 82,
+    "name": "Plaid",
+    "category": "Finance & Fintech",
+    "oneLiner": "Financial data API for connecting bank accounts and financial institutions",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Client credentials (client_id + secret) + Link token flow for user auth.",
+    "selfServe": "free",
+    "selfServeDetail": "Free Sandbox environment. Production requires application approval.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for auth, transactions, balance, identity, investments.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Excellent docs, sandbox. Production access requires approval and compliance.",
+    "blocker": "Production approval",
+    "docsUrl": "https://plaid.com/docs/"
+  },
+  {
+    "id": 83,
+    "name": "Binance",
+    "category": "Finance & Fintech",
+    "oneLiner": "Cryptocurrency exchange platform for trading digital assets",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key + HMAC-SHA256 signed requests. Ed25519 keys recommended.",
+    "selfServe": "free",
+    "selfServeDetail": "Free account. API keys generated in user security settings.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for trading, market data, account management, staking. WebSocket for real-time.",
+    "endpointRange": "200+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Broad API, free access. Request signing adds implementation complexity.",
+    "blocker": "Request signing complexity",
+    "docsUrl": "https://binance-docs.github.io/"
+  },
+  {
+    "id": 84,
+    "name": "Paygent Connect",
+    "category": "Finance & Fintech",
+    "oneLiner": "Payment gateway service (NMI-powered) for merchant processing",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Security Keys. Generated in NMI Admin Dashboard \u2192 Settings \u2192 Security Keys.",
+    "selfServe": "gated",
+    "selfServeDetail": "Requires merchant account. Setup through payment processor partner.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API and legacy transact.php API for payment processing.",
+    "endpointRange": "20+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "Merchant-gated access. NMI docs are decent but require existing merchant relationship.",
+    "blocker": "Merchant account required",
+    "docsUrl": "https://developer.nmi.com"
+  },
+  {
+    "id": 85,
+    "name": "iPayX",
+    "category": "Finance & Fintech",
+    "oneLiner": "AI-powered payment processing platform",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key authentication (details vary - platform is newer/less documented).",
+    "selfServe": "gated",
+    "selfServeDetail": "Limited public information. Requires direct contact for API access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for payments. Very limited public documentation.",
+    "endpointRange": "10+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "Minimal public documentation. Cannot verify API surface or auth independently.",
+    "blocker": "No public docs",
+    "docsUrl": "https://ipayx.ai/docs"
+  },
+  {
+    "id": 86,
+    "name": "QuickBooks",
+    "category": "Finance & Fintech",
+    "oneLiner": "Accounting software by Intuit for small business financial management",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 Authorization Code Flow. Mandatory user authorization.",
+    "selfServe": "free",
+    "selfServeDetail": "Free developer account and sandbox. Production requires app review.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for invoices, customers, payments, bills, accounts, reports.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Good docs, sandbox. OAuth is the only path, which adds complexity.",
+    "blocker": "Mandatory OAuth user flow",
+    "docsUrl": "https://developer.intuit.com/"
+  },
+  {
+    "id": 87,
+    "name": "Xero",
+    "category": "Finance & Fintech",
+    "oneLiner": "Cloud-based accounting platform for small and medium businesses",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 + OpenID Connect. Auth Code Flow or PKCE for native apps.",
+    "selfServe": "free",
+    "selfServeDetail": "Free developer account with demo company. App registration is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for invoices, contacts, accounts, bank transactions, reports.",
+    "endpointRange": "100+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Good docs, demo company. OAuth/OIDC is standard but requires user authorization.",
+    "blocker": "None",
+    "docsUrl": "https://developer.xero.com/"
+  },
+  {
+    "id": 88,
+    "name": "Brex",
+    "category": "Finance & Fintech",
+    "oneLiner": "Corporate card and financial management platform for startups",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "User API Tokens for internal, OAuth 2.0/OIDC for partner integrations.",
+    "selfServe": "gated",
+    "selfServeDetail": "API access requires Brex account (corporate card customer).",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for transactions, expenses, cards, budgets, payments.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "API exists but requires existing Brex account. No public sandbox.",
+    "blocker": "Requires Brex account",
+    "docsUrl": "https://developer.brex.com/"
+  },
+  {
+    "id": 89,
+    "name": "Ramp",
+    "category": "Finance & Fintech",
+    "oneLiner": "Corporate card and expense management platform with automation",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "OAuth 2.0 (Client Credentials for machine-to-machine, Auth Code for partners).",
+    "selfServe": "gated",
+    "selfServeDetail": "API access requires Ramp account. Credentials via Company \u2192 Developer.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for transactions, cards, departments, receipts, bills.",
+    "endpointRange": "50+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "API exists but requires corporate account. Good docs once you have access.",
+    "blocker": "Requires Ramp account",
+    "docsUrl": "https://docs.ramp.com/"
+  },
+  {
+    "id": 90,
+    "name": "PitchBook",
+    "category": "Finance & Fintech",
+    "oneLiner": "Financial data and research platform for private capital markets",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Bearer token: Authorization: PB-Token {API_KEY}. Non-standard prefix.",
+    "selfServe": "gated",
+    "selfServeDetail": "API access restricted to licensed clients. Requires separate contract.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v2 for companies, investors, deals, funds.",
+    "endpointRange": "20+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "Enterprise-gated with licensing contract. No self-serve path.",
+    "blocker": "Licensed clients only",
+    "docsUrl": "https://pitchbook.com"
+  },
+  {
+    "id": 91,
+    "name": "NotebookLM",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "Google's AI notebook tool for research and document synthesis",
+    "auth": [
+      "OAuth2"
+    ],
+    "authDetail": "Enterprise-only API via Google Cloud. No public consumer API.",
+    "selfServe": "gated",
+    "selfServeDetail": "Requires Gemini Enterprise or Education Premium license.",
+    "apiSurface": "REST",
+    "apiDetail": "Enterprise API only. Consumer usage is through web UI only.",
+    "endpointRange": "5+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "No public API. Enterprise-only access. Cannot build toolkit without enterprise license.",
+    "blocker": "No public API",
+    "docsUrl": "https://cloud.google.com/gemini"
+  },
+  {
+    "id": 92,
+    "name": "Otter AI",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "AI-powered meeting transcription and note-taking tool",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API access for Enterprise customers only. Contact account manager to enable.",
+    "selfServe": "gated",
+    "selfServeDetail": "API is Enterprise-only. No self-serve API access.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for transcripts, meetings. Webhooks available. Limited documentation.",
+    "endpointRange": "10+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "Enterprise-gated API. Unofficial Python libraries exist but are unsupported.",
+    "blocker": "Enterprise-only API",
+    "docsUrl": "https://help.otter.ai/"
+  },
+  {
+    "id": 93,
+    "name": "Fathom",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "AI meeting assistant for recording, transcribing, and summarizing meetings",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "API Key (generated in settings) or OAuth 2.0 for multi-user integrations.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. API key generation is self-serve.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for meetings, transcripts, summaries. TypeScript and Python SDKs.",
+    "endpointRange": "20+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Good API, free tier, official MCP server. Great fit for meeting agent toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://fathom.video"
+  },
+  {
+    "id": 94,
+    "name": "Consensus",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "AI-powered research platform for finding scientific evidence",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API credentials from Integrations section. Enterprise/team access only.",
+    "selfServe": "gated",
+    "selfServeDetail": "API available by application only. Enterprise/team plans required.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for research queries and paper retrieval. Limited surface.",
+    "endpointRange": "10+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "blocked",
+    "buildabilityDetail": "API gated behind enterprise plans. No self-serve API access.",
+    "blocker": "Enterprise-only API",
+    "docsUrl": "https://consensus.app"
+  },
+  {
+    "id": 95,
+    "name": "Reducto",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "AI document parsing and extraction platform for structured data",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key via environment variable REDUCTO_API_KEY. Obtained from studio.reducto.ai.",
+    "selfServe": "free",
+    "selfServeDetail": "Free tier available on studio.reducto.ai. Self-serve signup.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for document parsing, extraction. Python, Node.js, Go SDKs.",
+    "endpointRange": "10+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Simple API key auth, free tier, good SDKs. Purpose-built for AI document workflows.",
+    "blocker": "None",
+    "docsUrl": "https://docs.reducto.ai/"
+  },
+  {
+    "id": 96,
+    "name": "Devin",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "AI software engineering agent by Cognition for autonomous coding",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Service User API Key (cog_ prefix). Legacy keys not supported for MCP.",
+    "selfServe": "gated",
+    "selfServeDetail": "Access requires Devin account. Enterprise keys need X-Org-Id header.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API and MCP server for creating/managing Devin sessions.",
+    "endpointRange": "10+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "limited",
+    "buildabilityDetail": "Has MCP server but access is account-gated. Newer platform with evolving API.",
+    "blocker": "Account-gated",
+    "docsUrl": "https://docs.devin.ai/"
+  },
+  {
+    "id": 97,
+    "name": "higgsfield",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "AI content generation suite with video and creative tools",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "API Key via subscription key header (Ocp-Apim-Subscription-Key).",
+    "selfServe": "gated",
+    "selfServeDetail": "Access details not fully public. May require API subscription.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API for text-to-video, image-to-video generation.",
+    "endpointRange": "10+",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "limited",
+    "buildabilityDetail": "Limited public documentation. API access path unclear.",
+    "blocker": "Limited docs, unclear access",
+    "docsUrl": "https://higgsfield.ai"
+  },
+  {
+    "id": 98,
+    "name": "Mermaid CLI",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "Command-line tool for generating diagrams from Mermaid syntax",
+    "auth": [
+      "None"
+    ],
+    "authDetail": "CLI tool - no API authentication. Install via npm, run via mmdc command.",
+    "selfServe": "free",
+    "selfServeDetail": "Fully open-source and free. Install via npm/yarn.",
+    "apiSurface": "CLI",
+    "apiDetail": "CLI tool and Node.js API. Converts Mermaid definitions to SVG/PNG/PDF.",
+    "endpointRange": "0",
+    "hasMCP": false,
+    "mcpDetail": "No verified MCP server found",
+    "buildability": "ready",
+    "buildabilityDetail": "Open-source CLI, easy to wrap as a subprocess tool. No API needed.",
+    "blocker": "Not a web API",
+    "docsUrl": "https://github.com/mermaid-js/mermaid-cli"
+  },
+  {
+    "id": 99,
+    "name": "YouTube Transcript",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "API services for extracting YouTube video transcripts and captions",
+    "auth": [
+      "API Key"
+    ],
+    "authDetail": "Python library (no auth needed). REST services use API keys.",
+    "selfServe": "free",
+    "selfServeDetail": "Python library is free and open-source. REST services have free tiers.",
+    "apiSurface": "REST/Library",
+    "apiDetail": "Python library (youtube-transcript-api) or REST services (transcriptapi.com).",
+    "endpointRange": "5+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Python library needs no auth at all. Simple to integrate as a tool.",
+    "blocker": "None",
+    "docsUrl": "https://pypi.org/project/youtube-transcript-api/"
+  },
+  {
+    "id": 100,
+    "name": "Grain",
+    "category": "AI, Research & Media-native",
+    "oneLiner": "AI meeting recording and note-taking platform for customer conversations",
+    "auth": [
+      "API Key",
+      "OAuth2"
+    ],
+    "authDetail": "Personal/Workspace Access Tokens or OAuth 2.0 for delegated access.",
+    "selfServe": "free",
+    "selfServeDetail": "Free plan available. API tokens from Settings \u2192 Integrations \u2192 API.",
+    "apiSurface": "REST",
+    "apiDetail": "REST API v2 for recordings, highlights, meetings, users.",
+    "endpointRange": "20+",
+    "hasMCP": true,
+    "mcpDetail": "Available via Composio MCP server and community implementations",
+    "buildability": "ready",
+    "buildabilityDetail": "Token auth, free tier. V2 API is current. Good for meeting data toolkits.",
+    "blocker": "None",
+    "docsUrl": "https://grain.com"
+  }
+];
+
+    // Representative 20-App Audit Dataset (with exact official documentation URLs)
+    const AUDIT_SAMPLE = [
+      { id: 1, name: "Salesforce", category: "CRM & Sales", auth: "OAuth2", access: "Trial", api: "REST/SOAP", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/", notes: "Confirmed External Client Apps standard (replaces Connected Apps) with SOQL query endpoints. Free Developer Edition org sandbox is self-serve." },
+      { id: 2, name: "HubSpot", category: "CRM & Sales", auth: "OAuth2 / PAT", access: "Free", api: "REST", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://developers.hubspot.com/docs/api/", notes: "Confirmed legacy API key retirement (Nov 30, 2022); Private App Tokens and OAuth 2.0 standard. Free CRM plan includes API access." },
+      { id: 10, name: "DealCloud", category: "CRM & Sales", auth: "OAuth2", access: "Gated", api: "REST", mcp: "No", verdict: "Blocked", result: "Pass", sourceUrl: "https://api.docs.dealcloud.com", notes: "Confirmed 15-minute (900s) token expiry on `/oauth/token` Client Credentials flow. Intapp enterprise contract required." },
+      { id: 11, name: "Zendesk", category: "Support & Helpdesk", auth: "OAuth2", access: "Trial", api: "REST", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://developer.zendesk.com/", notes: "Confirmed 3-phase API Token sunsetting with final removal April 30, 2027; OAuth 2.0 is mandatory for all new apps." },
+      { id: 13, name: "Freshdesk", category: "Support & Helpdesk", auth: "Basic", access: "Free", api: "REST", mcp: "No", verdict: "Ready", result: "Pass", sourceUrl: "https://developers.freshdesk.com/api/", notes: "Confirmed HTTP Basic Auth with API Key as username; no OAuth. Free Sprout plan includes full API access." },
+      { id: 21, name: "Slack", category: "Communications", auth: "OAuth2", access: "Free", api: "REST/Events", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://api.slack.com/", notes: "Confirmed `xoxb-` bot tokens and granular OAuth scopes. Self-serve app creation via api.slack.com/apps." },
+      { id: 27, name: "Telegram", category: "Communications", auth: "Bot Token", access: "Free", api: "REST", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://core.telegram.org/bots/api", notes: "Confirmed token passed directly in URL path (`/bot<token>/sendMessage`). Instant self-serve bot creation via BotFather." },
+      { id: 28, name: "WhatsApp Business", category: "Communications", auth: "OAuth2", access: "Free/Gated", api: "REST", mcp: "No", verdict: "Ready", result: "Pass", sourceUrl: "https://developers.facebook.com/docs/whatsapp", notes: "Confirmed Cloud API via Meta Graph API; free sandbox tokens, Meta Business Verification required for production throughput." },
+      { id: 31, name: "Google Ads", category: "Marketing & Social", auth: "OAuth2", access: "Free/Review", api: "REST/gRPC", mcp: "No", verdict: "Ready", result: "Pass", sourceUrl: "https://developers.google.com/google-ads/api/docs/", notes: "Confirmed OAuth 2.0 + mandatory `developer-token` header requirement. Basic access self-serve, standard requires review." },
+      { id: 40, name: "SendGrid", category: "Marketing & Social", auth: "API Key", access: "Free", api: "REST", mcp: "No", verdict: "Ready", result: "Pass", sourceUrl: "https://docs.sendgrid.com/api-reference", notes: "Confirmed `Authorization: Bearer <KEY>` header and instant 100/day free plan." },
+      { id: 41, name: "Shopify", category: "Ecommerce", auth: "OAuth2", access: "Free", api: "GraphQL/REST", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://shopify.dev/docs/api", notes: "Confirmed Admin API with `X-Shopify-Access-Token` & free development stores via Shopify Partner program." },
+      { id: 49, name: "Amazon SP-API", category: "Ecommerce", auth: "OAuth2", access: "Gated", api: "REST", mcp: "No", verdict: "Limited", result: "Pass", sourceUrl: "https://developer-docs.amazon.com/sp-api/", notes: "Confirmed Login with Amazon (LWA) OAuth 2.0 + AWS Signature v4 IAM role review. Seller account and vetting required." },
+      { id: 51, name: "DataForSEO", category: "Data & SEO", auth: "Basic", access: "Trial", api: "REST", mcp: "No", verdict: "Ready", result: "Pass", sourceUrl: "https://docs.dataforseo.com/", notes: "Confirmed HTTP Basic Auth (`Authorization: Basic base64(login:password)`) and trial sandbox credits." },
+      { id: 61, name: "GitHub", category: "Developer & Infra", auth: "OAuth2 / PAT", access: "Free", api: "REST/GraphQL", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://docs.github.com/rest", notes: "Confirmed fine-grained PATs, GitHub App tokens, and official GitHub MCP server." },
+      { id: 65, name: "Supabase", category: "Developer & Infra", auth: "API Key / JWT", access: "Free", api: "REST/GraphQL", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://supabase.com/docs", notes: "Confirmed PostgREST auto-generated REST/GraphQL endpoints with `apikey` and Bearer JWT + official Supabase MCP." },
+      { id: 77, name: "ClickUp", category: "Productivity & PM", auth: "API Key", access: "Free", api: "REST", mcp: "No", verdict: "Ready", result: "Pass", sourceUrl: "https://clickup.com/api/", notes: "Confirmed raw string `Authorization: <token>` (no Bearer prefix) for personal tokens." },
+      { id: 80, name: "Harvest", category: "Productivity & PM", auth: "OAuth2 / PAT", access: "Free", api: "REST", mcp: "No", verdict: "Ready", result: "Pass", sourceUrl: "https://help.getharvest.com/api-v2/", notes: "Confirmed mandatory `Harvest-Account-Id` and `User-Agent` headers in addition to Bearer tokens." },
+      { id: 81, name: "Stripe", category: "Finance & Fintech", auth: "API Key", access: "Free", api: "REST", mcp: "Yes", verdict: "Ready", result: "Pass", sourceUrl: "https://stripe.com/docs/api", notes: "Confirmed Secret (`sk_`) / Restricted (`rk_`) keys and instant self-serve test sandbox." },
+      { id: 50, name: "fanbasis", category: "Ecommerce", auth: "API Key", access: "Gated", api: "SDK/REST", mcp: "No", verdict: "Blocked", result: "Partial", sourceUrl: "https://www.npmjs.com/package/@fanbasis/checkout", notes: "Verified `@fanbasis/checkout` SDK on npm; however standalone REST API documentation is closed behind KYC onboarding." },
+      { id: 85, name: "iPayX", category: "Finance & Fintech", auth: "API Key", access: "Gated", api: "REST", mcp: "No", verdict: "Blocked", result: "Fail", sourceUrl: "https://ipayx.ai", notes: "No public developer portal or endpoint documentation found on ipayx.ai. Flagged as unverified without direct vendor engagement." }
+    ];
+
+    let appsData = [...INLINE_APPS_DATA];
+    let currentSort = { col: 'id', dir: 'asc' };
+
+    async function loadData() {
+      try {
+        const res = await fetch('data/research_results.json');
+        if (res.ok) {
+          const remote = await res.json();
+          if (Array.isArray(remote) && remote.length > 0) {
+            appsData = remote;
+          }
+        }
+      } catch (e) {}
+      initApp();
+    }
+
+    function initApp() {
+      computeAndRenderMetrics(appsData);
+      renderTable(appsData);
+      renderAuditTable();
+    }
+
+    function computeAndRenderMetrics(data) {
+      const total = data.length;
+      const readyCount = data.filter(d => d.buildability === 'ready').length;
+      const limitedCount = data.filter(d => d.buildability === 'limited').length;
+      const blockedCount = data.filter(d => d.buildability === 'blocked').length;
+
+      const freeCount = data.filter(d => d.selfServe === 'free').length;
+      const trialCount = data.filter(d => d.selfServe === 'trial').length;
+      const gatedCount = data.filter(d => d.selfServe === 'gated').length;
+      const selfServeTotal = freeCount + trialCount;
+
+      // Canonical OAuth counts:
+      // Strict OAuth 2.0 = 61
+      // OAuth 1.0a = 2
+      // Total OAuth = 63
+      const oauth2Count = data.filter(d => (d.auth || []).includes('OAuth2')).length;
+      const oauth1Count = data.filter(d => (d.auth || []).includes('OAuth')).length;
+      const totalOauthCount = oauth2Count + oauth1Count;
+
+      const apiKeyCount = data.filter(d => (d.auth || []).some(a => a.toLowerCase().includes('key') || a.toLowerCase().includes('token'))).length;
+      const basicCount = data.filter(d => (d.auth || []).includes('Basic')).length;
+      const jwtCount = data.filter(d => (d.auth || []).includes('JWT')).length;
+      const noneCount = data.filter(d => (d.auth || []).includes('None')).length;
+      const keyPairCount = data.filter(d => (d.auth || []).includes('Key Pair')).length;
+      const botTokenCount = data.filter(d => (d.auth || []).includes('Bot Token')).length;
+
+      const mcpCount = data.filter(d => d.hasMCP === true).length;
+      const noMcpCount = total - mcpCount;
+
+      // Nav
+      const navTotal = document.getElementById('nav-total-count');
+      if (navTotal) navTotal.textContent = total;
+
+      // KPI 1: Buildability
+      document.getElementById('kpi-ready-badge').textContent = `${((readyCount / total) * 100).toFixed(0)}%`;
+      document.getElementById('kpi-ready-count').textContent = readyCount;
+      document.getElementById('kpi-limited-count').textContent = limitedCount;
+      document.getElementById('kpi-blocked-count').textContent = blockedCount;
+      document.getElementById('kpi-bar-ready').style.width = `${readyCount}%`;
+      document.getElementById('kpi-bar-limited').style.width = `${limitedCount}%`;
+      document.getElementById('kpi-bar-blocked').style.width = `${blockedCount}%`;
+
+      // KPI 2: Self-Serve
+      document.getElementById('kpi-selfserve-badge').textContent = `${((selfServeTotal / total) * 100).toFixed(0)}%`;
+      document.getElementById('kpi-selfserve-count').textContent = selfServeTotal;
+      document.getElementById('kpi-free-count').textContent = freeCount;
+      document.getElementById('kpi-trial-count').textContent = trialCount;
+      document.getElementById('kpi-bar-free').style.width = `${freeCount}%`;
+      document.getElementById('kpi-bar-trial').style.width = `${trialCount}%`;
+      document.getElementById('kpi-bar-gated').style.width = `${gatedCount}%`;
+
+      // KPI 3: OAuth 2.0 (Canonical 61%)
+      document.getElementById('kpi-oauth-badge').textContent = `${((oauth2Count / total) * 100).toFixed(0)}%`;
+      document.getElementById('kpi-oauth-count').textContent = oauth2Count;
+      document.getElementById('kpi-bar-oauth').style.width = `${oauth2Count}%`;
+      document.getElementById('kpi-bar-otherauth').style.width = `${100 - oauth2Count}%`;
+
+      // KPI 4: MCP
+      document.getElementById('kpi-mcp-badge').textContent = `${((mcpCount / total) * 100).toFixed(0)}%`;
+      document.getElementById('kpi-mcp-count').textContent = mcpCount;
+      document.getElementById('kpi-bar-mcp').style.width = `${mcpCount}%`;
+      document.getElementById('kpi-bar-nomcp').style.width = `${noMcpCount}%`;
+
+      // Filter option counts
+      document.getElementById('opt-ready-cnt').textContent = readyCount;
+      document.getElementById('opt-limited-cnt').textContent = limitedCount;
+      document.getElementById('opt-blocked-cnt').textContent = blockedCount;
+      document.getElementById('opt-mcp-cnt').textContent = mcpCount;
+      document.getElementById('opt-nomcp-cnt').textContent = noMcpCount;
+
+      // Quadrants and category bars have been removed for minimalism.
+
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+      
+      const btn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+      if (btn) btn.classList.add('active');
+      
+      const pane = document.getElementById('tab-' + tabId);
+      if (pane) pane.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById('table-body');
+      if (!tbody) return;
+      
+      tbody.innerHTML = data.map(app => {
+        const authBadges = app.auth.map(a => `<span class="tag tag-auth">${a}</span>`).join('');
+        const verdictTag = app.buildability === 'ready' 
+          ? `<span class="tag tag-ready">Ready</span>` 
+          : app.buildability === 'limited' 
+          ? `<span class="tag tag-limited">Limited</span>` 
+          : `<span class="tag tag-blocked">Blocked</span>`;
+
+        const accessTag = app.selfServe === 'free' 
+          ? `<span class="tag tag-free">Free</span>` 
+          : app.selfServe === 'trial' 
+          ? `<span class="tag tag-trial">Trial</span>` 
+          : `<span class="tag tag-gated">Gated</span>`;
+
+        const mcpTag = app.hasMCP ? `<span class="tag-mcp-yes">Yes</span>` : `<span class="tag-mcp-no">—</span>`;
+        const hostname = new URL(app.docsUrl).hostname.replace('www.', '');
+
+        return `
+          <tr onclick="openAppDrawerById(${app.id})">
+            <td class="col-id">${app.id}</td>
+            <td class="col-name">${app.name}</td>
+            <td style="white-space: nowrap;"><span class="category-chip">${app.category}</span></td>
+            <td style="max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${app.oneLiner}</td>
+            <td>${authBadges}</td>
+            <td>${accessTag}</td>
+            <td style="font-family: var(--font-mono); font-size: 11px;">${app.apiSurface}</td>
+            <td>${mcpTag}</td>
+            <td>${verdictTag}</td>
+            <td>
+              <a href="${app.docsUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color: var(--text-muted); font-family: var(--font-mono); font-size: 11px;">
+                ${hostname}
+              </a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderAuditTable() {
+      const tbody = document.getElementById('audit-table-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = AUDIT_SAMPLE.map((audit, idx) => {
+        const resultBadge = audit.result === 'Pass' 
+          ? `<span class="tag tag-ready">Pass</span>` 
+          : audit.result === 'Partial' 
+          ? `<span class="tag tag-limited">Partial</span>` 
+          : `<span class="tag tag-blocked">Fail</span>`;
+
+        const hostname = new URL(audit.sourceUrl).hostname.replace('www.', '');
+
+        return `
+          <tr onclick="toggleAuditDetail(${idx})">
+            <td class="col-id">${audit.id}</td>
+            <td class="col-name">${audit.name}</td>
+            <td><span class="category-chip">${audit.category}</span></td>
+            <td><span class="tag tag-auth">${audit.auth}</span></td>
+            <td><span class="tag tag-${audit.access.toLowerCase().includes('free') ? 'free' : audit.access.toLowerCase().includes('trial') ? 'trial' : 'gated'}">${audit.access}</span></td>
+            <td style="font-family: var(--font-mono); font-size: 11px;">${audit.api}</td>
+            <td>${audit.mcp === 'Yes' ? '<span class="tag-mcp-yes">Yes</span>' : '<span class="tag-mcp-no">—</span>'}</td>
+            <td><span class="tag tag-${audit.verdict.toLowerCase()}">${audit.verdict}</span></td>
+            <td>${resultBadge}</td>
+            <td>
+              <a href="${audit.sourceUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color: var(--blue); font-family: var(--font-mono); font-size: 11px; text-decoration: underline;">
+                ${hostname}
+              </a>
+            </td>
+          </tr>
+          <tr id="audit-detail-${idx}" class="audit-detail-row">
+            <td colspan="10" class="audit-detail-cell">
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+                <div>
+                  <strong style="color: var(--text);">Audit Finding:</strong> ${audit.notes}
+                </div>
+                <button class="btn" style="height: 24px; font-size: 11px; padding: 0 8px;" onclick="openAppDrawerById(${audit.id}); event.stopPropagation();">
+                  Inspect in Drawer
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function toggleAuditDetail(idx) {
+      const row = document.getElementById(`audit-detail-${idx}`);
+      if (row) row.classList.toggle('open');
+    }
+
+    function applyFilters() {
+      const q = document.getElementById('search-input').value.toLowerCase().trim();
+      const cat = document.getElementById('filter-category').value;
+      const verdict = document.getElementById('filter-verdict').value;
+      const auth = document.getElementById('filter-auth').value;
+      const mcp = document.getElementById('filter-mcp').value;
+
+      const filtered = appsData.filter(app => {
+        const matchesQuery = !q || 
+          app.name.toLowerCase().includes(q) || 
+          app.category.toLowerCase().includes(q) || 
+          app.oneLiner.toLowerCase().includes(q) ||
+          app.blocker.toLowerCase().includes(q);
+
+        const matchesCat = cat === 'all' || app.category === cat;
+        const matchesVerdict = verdict === 'all' || app.buildability === verdict;
+        const matchesAuth = auth === 'all' || app.auth.includes(auth);
+        const matchesMcp = mcp === 'all' || String(app.hasMCP) === mcp;
+
+        return matchesQuery && matchesCat && matchesVerdict && matchesAuth && matchesMcp;
+      });
+
+      renderTable(filtered);
+    }
+
+    function resetFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('filter-category').value = 'all';
+      document.getElementById('filter-verdict').value = 'all';
+      document.getElementById('filter-auth').value = 'all';
+      document.getElementById('filter-mcp').value = 'all';
+      renderTable(appsData);
+    }
+
+    function handleSort(col) {
+      if (currentSort.col === col) {
+        currentSort.dir = currentSort.dir === 'asc' ? 'desc' : 'asc';
+      } else {
+        currentSort.col = col;
+        currentSort.dir = 'asc';
+      }
+
+      appsData.sort((a, b) => {
+        let valA = a[col];
+        let valB = b[col];
+
+        if (typeof valA === 'string') valA = valA.toLowerCase();
+        if (typeof valB === 'string') valB = valB.toLowerCase();
+
+        if (valA < valB) return currentSort.dir === 'asc' ? -1 : 1;
+        if (valA > valB) return currentSort.dir === 'asc' ? 1 : -1;
+        return 0;
+      });
+
+      applyFilters();
+    }
+
+    function openAppDrawerById(appId) {
+      const app = appsData.find(a => a.id === appId);
+      if (!app) return;
+
+      document.getElementById('drawer-name').textContent = app.name;
+      document.getElementById('drawer-category').textContent = app.category;
+      document.getElementById('drawer-desc').textContent = app.oneLiner;
+      document.getElementById('drawer-auth-detail').textContent = app.authDetail;
+      document.getElementById('drawer-access-detail').textContent = app.selfServeDetail;
+      document.getElementById('drawer-api-detail').textContent = `${app.apiSurface} (${app.endpointRange} endpoints) — ${app.apiDetail}`;
+      document.getElementById('drawer-mcp-detail').textContent = app.mcpDetail;
+      document.getElementById('drawer-build-detail').textContent = app.buildabilityDetail;
+      document.getElementById('drawer-blocker').textContent = app.blocker || 'None identified';
+      
+      document.getElementById('drawer-doc-link').href = app.docsUrl;
+
+      const verdictBadge = document.getElementById('drawer-verdict-badge');
+      verdictBadge.className = `tag tag-${app.buildability}`;
+      verdictBadge.textContent = app.buildability.toUpperCase();
+
+      document.getElementById('drawer').classList.add('open');
+      document.getElementById('drawer-overlay').classList.add('open');
+    }
+
+    function closeDrawer() {
+      document.getElementById('drawer').classList.remove('open');
+      document.getElementById('drawer-overlay').classList.remove('open');
+    }
+
+    function exportData(format) {
+      if (format === 'json') {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appsData, null, 2));
+        const dlAnchor = document.createElement('a');
+        dlAnchor.setAttribute("href", dataStr);
+        dlAnchor.setAttribute("download", "composio_100_apps_research.json");
+        dlAnchor.click();
+      } else if (format === 'csv') {
+        const headers = ["ID", "Name", "Category", "Description", "Auth", "Self-Serve", "API Surface", "MCP", "Buildability", "Blocker", "Docs URL"];
+        const rows = appsData.map(a => [
+          a.id,
+          `"${a.name}"`,
+          `"${a.category}"`,
+          `"${a.oneLiner.replace(/"/g, '""')}"`,
+          `"${a.auth.join(', ')}"`,
+          `"${a.selfServe}"`,
+          `"${a.apiSurface}"`,
+          a.hasMCP ? "Yes" : "No",
+          `"${a.buildability}"`,
+          `"${a.blocker}"`,
+          `"${a.docsUrl}"`
+        ]);
+
+        const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+        const dlAnchor = document.createElement('a');
+        dlAnchor.setAttribute("href", encodeURI(csvContent));
+        dlAnchor.setAttribute("download", "composio_100_apps_research.csv");
+        dlAnchor.click();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    loadData();
+  </script>
+</body>
+</html>
