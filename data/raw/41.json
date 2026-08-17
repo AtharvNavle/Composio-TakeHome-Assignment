@@ -1,0 +1,25 @@
+{
+  "app": {
+    "id": 41,
+    "name": "Shopify",
+    "category": "Ecommerce",
+    "website": "https://www.shopify.com"
+  },
+  "record": null,
+  "json_valid": false,
+  "provenance": {
+    "fetched_urls": [],
+    "search_queries": []
+  },
+  "meta": {
+    "wall_s": 1.2,
+    "model": "gemini-3.6-flash",
+    "backend": "gemini_sdk",
+    "prompt_version": "v2_json",
+    "prompt_sha256_12": "acd2d8299114",
+    "run_id": "run-1786980932",
+    "exit_code": 1,
+    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+  },
+  "raw_result_text": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}]}}"
+}

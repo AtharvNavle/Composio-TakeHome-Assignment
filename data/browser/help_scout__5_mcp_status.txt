@@ -1,0 +1,1 @@
+help scout mcp server this server requires authentication. if you have access, connect using your mcp client.

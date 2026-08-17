@@ -1,0 +1,110 @@
+{
+  "app": {
+    "id": "hubspot",
+    "name": "HubSpot",
+    "category": "CRM and Sales",
+    "hint_url": "hubspot.com"
+  },
+  "record": {
+    "id": "hubspot",
+    "one_liner": "CRM/marketing/sales platform with a broad REST API for contacts, deals, marketing, CMS, and automation.",
+    "auth_methods": [
+      "oauth2",
+      "bearer_token",
+      "api_key"
+    ],
+    "auth_notes": "Private apps (single-account) use a static bearer access token generated in-app; multi-account distributed apps must use OAuth2 with a hosted backend service; legacy developer API keys (hapikey) also exist for some endpoints.",
+    "access_model": "free_self_serve",
+    "access_notes": "Private apps can be created self-serve by any super admin on any HubSpot subscription tier including Free/Starter, with no explicit approval step; access token is generated immediately in the app's Auth tab.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "HubSpot's developer platform spans multiple API/product families (CRM objects, Apps, Developer Tooling, CMS) and the official MCP server alone exposes CRM objects including contacts, companies, deals, tickets, carts, products, orders, line items, invoices, quotes, subscriptions, and segments plus engagements (calls, emails, meetings, notes, tasks) - well beyond 60 endpoints across families.",
+    "docs_url": "https://developers.hubspot.com/docs/api/overview",
+    "mcp_status": "official",
+    "mcp_url": "https://developers.hubspot.com/ai-tools/mcp",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Free self-serve API credentials (private app tokens) are available on all subscription tiers including the free tier, with a broad REST API surface and an official vendor-hosted MCP server; no paid plan or approval gate blocks basic toolkit construction.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developers.hubspot.com/docs/guides/apps/authentication/intro-to-auth",
+        "quote": "set up and host an OAuth backend service (e.g., hosted as a Docker instance using a cloud service provider)",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://developers.hubspot.com/docs/guides/apps/private-apps/overview",
+        "quote": "You must be a super admin to access private apps in your HubSpot account.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://developers.hubspot.com/docs/guides/apps/private-apps/overview",
+        "quote": "Free and Starter",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://developers.hubspot.com/ai-tools/mcp",
+        "quote": "contacts, companies, deals, tickets, carts, products, orders, line items, invoices, quotes, subscriptions, and segments (lists)",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://developers.hubspot.com/ai-tools/mcp",
+        "quote": "user-level application with read scopes for the CRM objects you want to access",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://developers.hubspot.com/get-started",
+        "quote": "Create developer account with a HubSpot Developer account",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developers.hubspot.com/docs/api/overview",
+      "https://developers.hubspot.com/get-started",
+      "https://developers.hubspot.com/docs/guides/apps/authentication/intro-to-auth",
+      "https://developers.hubspot.com/ai-tools/mcp",
+      "https://developers.hubspot.com/docs/guides/apps/private-apps/overview",
+      "https://developers.hubspot.com/docs/guides/apps/private-apps/overview"
+    ],
+    "search_queries": [
+      "HubSpot official MCP server developers.hubspot.com"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.30851510000000004,
+    "duration_ms": 77143,
+    "num_turns": 10,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786978800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 80.9,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786964941",
+    "exit_code": 0
+  }
+}

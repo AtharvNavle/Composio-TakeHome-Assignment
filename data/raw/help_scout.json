@@ -1,0 +1,112 @@
+{
+  "app": {
+    "id": "help_scout",
+    "name": "Help Scout",
+    "category": "Support and Helpdesk",
+    "hint_url": "helpscout.com"
+  },
+  "record": {
+    "id": "help_scout",
+    "one_liner": "Customer support helpdesk and shared inbox platform with a REST API for conversations, customers, and reports.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "auth_notes": "Mailbox API 2.0 uses OAuth 2 exclusively (no API key/basic auth support). Supports Authorization Code flow (for third-party integrations) and Client Credentials flow (app ID + app secret, token valid 2 days) for single-account use. OAuth apps are created under 'My apps' in a Help Scout user profile; credentials must be tied to an active, invited user.",
+    "access_model": "paid_plan_required",
+    "access_notes": "API access is listed as a paid-tier feature on the pricing page (Standard: 200 calls/min, Plus: 400 calls/min, Pro: 800 calls/min); the Free plan does not include API access. A 15-day free trial of paid plans exists but the fetched pricing page does not explicitly confirm API access during trial.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "Mailbox API 2.0 covers many resource families: conversations (threads, attachments, custom fields, tags, snooze), customers (addresses, emails, phones, chat handles, social profiles), inboxes (routing, saved replies), organizations, reports (company, conversations, happiness, productivity, user/team, chat, email, phone), users, teams, system users, tags, ratings, webhooks, and workflows \u2014 well over 60 endpoints across categories.",
+    "docs_url": "https://developer.helpscout.com/mailbox-api/",
+    "mcp_status": "official",
+    "mcp_url": "https://mcp-beta.helpscout.net/",
+    "buildability": "buildable_with_paid_account",
+    "primary_blocker": "paid_plan_required",
+    "blocker_notes": "A developer can self-serve create an OAuth app and use Client Credentials flow without approval, but the underlying Help Scout account must be on a paid plan (Standard/Plus/Pro) since API access is excluded from the Free tier.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developer.helpscout.com/mailbox-api/",
+        "quote": "This is an HTTPS-only API, with OAuth 2 authentication and CORS support.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+        "quote": "it is possible to retrieve an access token directly using your application id and application secret",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.helpscout.com/pricing/",
+        "quote": "Read/write data and connect more key systems with Help Scout.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_protocols",
+        "url": "https://developer.helpscout.com/mailbox-api/",
+        "quote": "This is an HTTPS-only API, with OAuth 2 authentication and CORS support.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://articles.helpscout.com/blog/introducing-help-scout-mcp/",
+        "quote": "Today, we're bringing Help Scout's Model Context Protocol (MCP) server out of beta, making it generally available to all Help Scout customers.",
+        "source_tier": 2
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://mcp-beta.helpscout.net/",
+        "quote": "This server requires authentication. If you have access, connect using your MCP client.",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "access_model",
+        "reason": "search_exhausted"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developer.helpscout.com/mailbox-api/",
+      "https://www.helpscout.com/pricing/",
+      "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+      "https://articles.helpscout.com/blog/introducing-help-scout-mcp/",
+      "https://mcp-beta.helpscout.net/"
+    ],
+    "search_queries": [
+      "Help Scout MCP server"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.26699280000000003,
+    "duration_ms": 65857,
+    "num_turns": 8,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed_warning",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "utilization": 0.94,
+      "isUsingOverage": false,
+      "surpassedThreshold": 0.9
+    },
+    "wall_s": 67.6,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979553",
+    "exit_code": 0
+  }
+}

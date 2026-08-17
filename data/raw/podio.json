@@ -1,0 +1,127 @@
+{
+  "app": {
+    "id": "podio",
+    "name": "Podio",
+    "category": "CRM and Sales",
+    "hint_url": "podio.com"
+  },
+  "record": {
+    "id": "podio",
+    "one_liner": "Cloud work-management/collaboration platform (apps, items, workspaces, tasks) with a broad REST API and OAuth2 access.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "auth_notes": "Podio API uses OAuth2 (server-side, client-side, username/password, and app authentication flows). Developers register an application to get a Client ID + Client Secret, and can also generate personal API keys from account settings.",
+    "access_model": "free_tier_self_serve",
+    "access_notes": "Self-serve: sign up/sign in to Podio and generate an API key or register an OAuth client from account settings, no approval step. Free plan (up to 5 employees) includes API access capped at 1000 calls/hour; paid add-ons ($23-$199/mo) raise the rate limit but are not required to build/use a toolkit.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "developers.podio.com/doc lists 40+ resource categories (Applications, Items, Tasks, Spaces, Files, Comments, Hooks, Search, Views, Widgets, Notifications, Calendar, Flows, Forms, Organizations, etc.), and the docs state the entire Podio frontend is built on this API.",
+    "docs_url": "https://developers.podio.com/",
+    "mcp_status": "official",
+    "mcp_url": "https://mcp.podio.com",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Free-tier self-serve API access plus a vendor-hosted MCP server (mcp.podio.com) documented on Progress's own Podio docs site removes the usual access gates; only constraint is the 1000 calls/hour rate limit on the free tier.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developers.podio.com/authentication",
+        "quote": "The Podio API uses the OAuth2 protocol for authentication.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developers.podio.com/authentication",
+        "quote": "Before you can use the Podio API you must register your application. Your application is assigned a unique identifier, called \"Client ID\", together with a \"Client Secret\".",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://developers.podio.com/api-key",
+        "quote": "It's easy to get one or more API keys for accessing your Podio data. You just have to sign in or sign up with Podio, and go to the API key tab in your settings.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.progress.com/podio/pricing",
+        "quote": "1000 calls per hour",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://developers.podio.com/doc",
+        "quote": "Applications",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_protocols",
+        "url": "https://developers.podio.com/",
+        "quote": "the entire Podio frontend is built on the API",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://mcp.podio.com",
+        "quote": "MCP server exposing Podio API tools for integration with ChatGPT, Copilot Studio, and other MCP-compatible clients.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://www.progress.com/podio/documentation/using-podio/general-features/podio-mcp-server.html",
+        "quote": "live",
+        "source_tier": 2
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developers.podio.com/api-key",
+      "https://developers.podio.com/",
+      "https://developers.podio.com/doc",
+      "https://www.progress.com/podio/pricing",
+      "https://docs.sharefile.com/en-us/podio/using-podio/general-features/podio-mcp-server.html",
+      "https://www.progress.com/podio/documentation/using-podio/general-features/podio-mcp-server.html",
+      "https://mcp.podio.com",
+      "https://mcp.podio.com",
+      "https://developers.podio.com/authentication"
+    ],
+    "search_queries": [
+      "Podio API developers.podio.com authentication",
+      "Podio API keys client application register",
+      "Podio pricing plans podio.com/pricing",
+      "Podio MCP server official"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.5213715999999999,
+    "duration_ms": 111707,
+    "num_turns": 16,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 115.8,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

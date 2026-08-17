@@ -1,0 +1,110 @@
+{
+  "app": {
+    "id": "copper",
+    "name": "Copper",
+    "category": "CRM and Sales",
+    "hint_url": "copper.com"
+  },
+  "record": {
+    "id": "copper",
+    "one_liner": "Relationship-focused CRM built for Google Workspace, offering pipeline, contact, and lead management.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "auth_notes": "API keys are generated self-serve in Copper's web app (System settings > API Keys) and sent in request headers with the generating user's email. OAuth2.0 authorization-code grant is described as the preferred method for partner/third-party integrations, but registering an OAuth app requires obtaining client_id/client_secret from Copper (documentation points developers to contact Copper's partnerships team), so OAuth app creation is not purely self-serve.",
+    "access_model": "paid_plan_required",
+    "access_notes": "Copper's own pricing page lists 'API & Embedded integration SDK' as a feature included only in the Professional and Business plan tiers, not the lower Basic/Starter tiers. API key generation (System settings > API Keys) is otherwise self-serve for users on a qualifying paid plan.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "developer.copper.com documents CRUD/bulk operations across many distinct resource families: Account & Users, Leads, People, Companies, Opportunities, Projects, Tasks, Activities, Custom Fields, Tags, File Upload (S3-based), Webhooks, and Related Items \u2014 well beyond the ~15-endpoint narrow threshold.",
+    "docs_url": "https://developer.copper.com/",
+    "mcp_status": "third_party_only",
+    "mcp_url": "https://www.apideck.com/mcp-server/copper",
+    "buildability": "buildable_with_paid_account",
+    "primary_blocker": "paid_plan_required",
+    "blocker_notes": "A working toolkit requires a Copper account on the Professional plan ($59/seat/mo, per third-party pricing summaries) or Business plan, since API access is gated out of the cheaper tiers per Copper's own pricing page. Once on a qualifying plan, API key auth is immediate/self-serve; OAuth app registration additionally requires contacting Copper's partnerships team.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developer.copper.com/introduction/authentication.html",
+        "quote": "the email address of the user who generated the token",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developer.copper.com/introduction/authentication.html",
+        "quote": "the preferred approach",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.copper.com/pricing",
+        "quote": "API & Embedded integration SDK",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://developer.copper.com/",
+        "quote": "The Copper API uses REST with JSON-formatted responses",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://www.apideck.com/mcp-server/copper",
+        "quote": "Give your AI agents secure, structured access to Copper data through the **Apideck MCP Server**.",
+        "source_tier": 4
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://www.copper.com/pricing",
+        "quote": "API & Embedded integration SDK",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developer.copper.com/introduction/authentication.html",
+      "https://developer.copper.com/",
+      "https://www.copper.com/pricing",
+      "https://developer.copper.com/introduction/oauth/flow.html",
+      "https://www.apideck.com/mcp-server/copper"
+    ],
+    "search_queries": [
+      "Copper CRM API developer documentation authentication",
+      "Copper CRM MCP server",
+      "Copper CRM pricing plans API access"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.39205759999999995,
+    "duration_ms": 94667,
+    "num_turns": 11,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 96.6,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

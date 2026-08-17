@@ -1,0 +1,72 @@
+{
+    "id": "integer: 1-100",
+    "name": "string",
+    "category": "string",
+    "one_liner": "string: <= 20 words",
+    "auth": {
+        "type": "array",
+        "allowed_values": [
+            "OAuth2",
+            "API Key",
+            "Basic Auth",
+            "Bearer Token",
+            "Bot Token",
+            "JWT",
+            "HMAC",
+            "Other",
+            "Unknown"
+        ],
+        "description": "Authentication methods supported by the public API."
+    },
+    "access_model": {
+        "allowed_values": [
+            "Free Self-Serve",
+            "Trial Self-Serve",
+            "Paid Self-Serve",
+            "Admin Approval",
+            "Contact Sales",
+            "Partner / Application Required",
+            "No Public API",
+            "Unknown"
+        ],
+        "description": "How a developer can obtain the credentials/access needed to use the API."
+    },
+    "api_surface": {
+        "protocols": [
+            "REST",
+            "GraphQL",
+            "SOAP",
+            "WebSocket",
+            "CLI",
+            "SDK",
+            "Other",
+            "Unknown"
+        ],
+        "breadth": "string: concise description of how broad/useful the API is",
+        "description": "Public API surface and approximate breadth."
+    },
+    "mcp": {
+        "status": "Official MCP | Vendor-supported MCP | Community MCP | No MCP Found | Unknown",
+        "evidence_type": "Official vendor documentation | Official repository | Third-party repository | Other | None",
+        "description": "Whether an MCP server exists and what kind."
+    },
+    "buildability": {
+        "verdict": "Ready | Limited | Blocked | Unknown",
+        "blocker": "string",
+        "description": "Whether this app could reasonably become an agent toolkit today."
+    },
+    "evidence": [
+        {
+            "field": "string",
+            "url": "string",
+            "source_type": "Official Docs | Official Pricing | Official Developer Portal | Official Repository | Third Party | Other",
+            "quote": "string",
+            "retrieved": true
+        }
+    ],
+    "confidence": {
+        "overall": "High | Medium | Low",
+        "reason": "string"
+    },
+    "research_notes": "string"
+}

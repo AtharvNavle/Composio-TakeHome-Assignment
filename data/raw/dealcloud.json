@@ -1,0 +1,110 @@
+{
+  "app": {
+    "id": "dealcloud",
+    "name": "DealCloud",
+    "category": "CRM and Sales",
+    "hint_url": "api.docs.dealcloud.com"
+  },
+  "record": {
+    "id": "dealcloud",
+    "one_liner": "Enterprise deal management and relationship intelligence CRM platform (Intapp) with a REST API for records, schema, and events.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "auth_notes": "DealCloud issues an API Key (Client ID + secret) from a user's Profile page, which is exchanged via OAuth2 Client Credentials flow at {baseUrl}/api/rest/v1/oauth/token to obtain a bearer token used in the Authorization header.",
+    "access_model": "admin_approval_required",
+    "access_notes": "API access is not self-serve signup: an admin must enable the 'API' capability for a user group under Admin > User Management before a user can generate an API key from their profile. Publications (event streaming) additionally requires contacting the account manager to have it enabled. No vendor-owned public pricing/signup page was found; DealCloud appears to be sold only to existing enterprise customers.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "moderate",
+    "api_breadth_basis": "Vendor docs list several distinct resource families (Authentication, User Management, Schema, Data, Backups, Publications, Relationship Intelligence) each with multiple endpoints, plus Python/C# SDKs \u2014 more than a narrow single-resource API but not a sprawling 60+ endpoint surface.",
+    "docs_url": "https://api.docs.dealcloud.com/docs",
+    "mcp_status": "vendor_beta",
+    "mcp_url": "https://api.docs.dealcloud.com/mcp",
+    "buildability": "buildable_with_approval",
+    "primary_blocker": "admin_approval",
+    "blocker_notes": "A working DealCloud toolkit requires an existing DealCloud customer account where a site admin enables the API capability for the user's group, then the user enables their own API key. There is no public self-serve developer signup outside of an existing paid customer relationship.",
+    "auth_confidence": "high",
+    "access_confidence": "medium",
+    "mcp_confidence": "high",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://api.docs.dealcloud.com/docs/apikeys",
+        "quote": "Treat your API key like a password: do not share it or expose it in public code repositories.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://api.docs.dealcloud.com/docs/apikeys",
+        "quote": "Navigate to Admin > User Management, select the relevant user group, go to Capabilities > Site Areas, and enable 'API'.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://api.docs.dealcloud.com/docs/publications/getting_started",
+        "quote": "Get in touch with your account manager to have Publications enabled on your site.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://api.docs.dealcloud.com/docs",
+        "quote": "Authentication",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://api.docs.dealcloud.com/mcp",
+        "quote": "DealCloud MCP Server \u2014 client preview starting July 2026",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "access_model",
+        "reason": "no_docs_found"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://api.docs.dealcloud.com",
+      "https://api.docs.dealcloud.com/docs/apikeys",
+      "https://api.docs.dealcloud.com/docs/publications/getting_started",
+      "https://api.docs.dealcloud.com/docs/mcp",
+      "https://api.docs.dealcloud.com/mcp",
+      "https://api.docs.dealcloud.com/docs"
+    ],
+    "search_queries": [
+      "DealCloud API developer access credentials OAuth",
+      "DealCloud pricing plans \"contact sales\" OR \"request a demo\"",
+      "DealCloud MCP Server api.docs.dealcloud.com getting started"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.3744418,
+    "duration_ms": 86387,
+    "num_turns": 12,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 88.1,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

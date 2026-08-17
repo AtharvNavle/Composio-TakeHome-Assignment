@@ -1,0 +1,37 @@
+{
+  "app": {
+    "id": "aircall",
+    "name": "Aircall",
+    "category": "Communications and Messaging",
+    "hint_url": "aircall.io"
+  },
+  "record": null,
+  "json_valid": false,
+  "provenance": {
+    "fetched_urls": [],
+    "search_queries": []
+  },
+  "meta": {
+    "total_cost_usd": 0,
+    "duration_ms": 1431,
+    "num_turns": 1,
+    "stop_reason": "stop_sequence",
+    "is_error": true,
+    "rate_limit": {
+      "status": "rejected",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 3.2,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979952",
+    "exit_code": 1
+  },
+  "raw_result_text": "You've hit your session limit \u00b7 resets 1:30am (Asia/Kolkata)"
+}

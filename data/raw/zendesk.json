@@ -1,0 +1,108 @@
+{
+  "app": {
+    "id": "zendesk",
+    "name": "Zendesk",
+    "category": "Support and Helpdesk",
+    "hint_url": "zendesk.com"
+  },
+  "record": {
+    "id": "zendesk",
+    "one_liner": "Customer service/support ticketing platform with a broad REST API for tickets, help center, talk, chat, sell, and conversations.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "auth_notes": "OAuth2 (Bearer access token) is the recommended method. Legacy API tokens use basic auth format {email}/token:{api_token}, base64-encoded in the Authorization header; API tokens are being deprecated (deactivation April 30, 2027), pushing integrations to OAuth.",
+    "access_model": "paid_plan_required",
+    "access_notes": "API rate limits are defined per paid Zendesk plan tier (Team through Enterprise Plus), with a High Volume API add-on available for qualifying Suite Growth/Support Professional plans and above. No mention of a permanent free API tier was found in fetched vendor docs; could not fetch a pricing/signup page directly within budget to confirm trial self-serve availability, so access_model is based on plan-gated rate limits rather than a signup page.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "developer.zendesk.com/api-reference lists many product-family APIs: Support (tickets/users/orgs), Help Center, AI Agents, Conversations, Talk, Custom Objects, Chat, Sell, Status, Web Widget/Mobile SDKs, Apps framework across products, Webhooks, and Zendesk Integration Services (ZIS) \u2014 well beyond 60 endpoints spanning multiple product lines.",
+    "docs_url": "https://developer.zendesk.com/api-reference/",
+    "mcp_status": "unknown",
+    "mcp_url": null,
+    "buildability": "buildable_with_paid_account",
+    "primary_blocker": "paid_plan_required",
+    "blocker_notes": "The REST API surface is broad and well-documented with standard OAuth2/API-token auth, but usage is tied to a paid Zendesk plan (rate limits start at the Team tier); no evidence of a perpetual free tier was found in fetched vendor docs.",
+    "auth_confidence": "high",
+    "access_confidence": "medium",
+    "mcp_confidence": "low",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+        "quote": "API tokens are auto-generated passwords in the Zendesk Admin Center.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://developer.zendesk.com/api-reference/introduction/rate-limits/",
+        "quote": "You can increase the Support and Help Center API rate limits with the High Volume API add-on",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://developer.zendesk.com/api-reference/",
+        "quote": "Work with tickets, users and organizations",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://developer.zendesk.com/api-reference/introduction/rate-limits/",
+        "quote": "You can increase the Support and Help Center API rate limits with the High Volume API add-on",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "mcp_status",
+        "reason": "search_exhausted"
+      },
+      {
+        "field": "access_model",
+        "reason": "search_exhausted"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developer.zendesk.com/api-reference/introduction/",
+      "https://developer.zendesk.com/api-reference/",
+      "https://developer.zendesk.com/documentation/ticketing/working-with-webhooks/getting-started-with-oauth/",
+      "https://developer.zendesk.com/api-reference/introduction/security-and-auth/",
+      "https://www.zendesk.com/register/",
+      "https://developer.zendesk.com/api-reference/introduction/rate-limits/"
+    ],
+    "search_queries": [
+      "Zendesk API authentication API token OAuth site:developer.zendesk.com",
+      "Zendesk MCP server official developer.zendesk.com",
+      "Zendesk API rate limits plan required Suite Team Professional"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.4273686,
+    "duration_ms": 116501,
+    "num_turns": 12,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 118.3,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

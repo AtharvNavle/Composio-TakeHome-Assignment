@@ -1,0 +1,712 @@
+[
+  {
+    "app": "attio",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://docs.attio.com/docs/oauth/token",
+    "quote": "An access token for the workspace which can be used to make authenticated requests to the Attio REST API",
+    "rendered_chars": 2171,
+    "verdict": "quote_found",
+    "artifact": "attio__0_auth_methods"
+  },
+  {
+    "app": "attio",
+    "idx": 1,
+    "field": "auth_methods",
+    "url": "https://docs.attio.com/mcp/overview",
+    "quote": "you simply log in with your Attio account\u2014no API keys required",
+    "rendered_chars": 16639,
+    "verdict": "quote_found",
+    "artifact": "attio__1_auth_methods"
+  },
+  {
+    "app": "attio",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://attio.com/pricing",
+    "quote": "API and webhook access",
+    "rendered_chars": 4806,
+    "verdict": "quote_found",
+    "artifact": "attio__2_access_model"
+  },
+  {
+    "app": "attio",
+    "idx": 3,
+    "field": "mcp_status",
+    "url": "https://docs.attio.com/mcp/overview",
+    "quote": "Attio's hosted MCP server that gives AI tools secure access to your Attio workspace.",
+    "rendered_chars": 16639,
+    "verdict": "quote_not_found",
+    "artifact": "attio__3_mcp_status"
+  },
+  {
+    "app": "attio",
+    "idx": 4,
+    "field": "buildability",
+    "url": "https://attio.com/pricing",
+    "quote": "API and webhook access",
+    "rendered_chars": 4806,
+    "verdict": "quote_found",
+    "artifact": "attio__4_buildability"
+  },
+  {
+    "app": "close",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://developer.close.com/",
+    "quote": "API keys for scripts or OAuth 2.0 for user-facing integrations.",
+    "rendered_chars": 2877,
+    "verdict": "quote_found",
+    "artifact": "close__0_auth_methods"
+  },
+  {
+    "app": "close",
+    "idx": 3,
+    "field": "api_breadth",
+    "url": "https://developer.close.com/",
+    "quote": "API keys for scripts or OAuth 2.0 for user-facing integrations.",
+    "rendered_chars": 2877,
+    "verdict": "quote_found",
+    "artifact": "close__3_api_breadth"
+  },
+  {
+    "app": "close",
+    "idx": 4,
+    "field": "mcp_status",
+    "url": "https://developer.close.com/mcp",
+    "quote": "Close's MCP server is officially supported across the Claude ecosystem.",
+    "rendered_chars": 3176,
+    "verdict": "quote_not_found",
+    "artifact": "close__4_mcp_status"
+  },
+  {
+    "app": "close",
+    "idx": 5,
+    "field": "mcp_status",
+    "url": "https://developer.close.com/mcp",
+    "quote": "OAuth 2.0 Dynamic Client Registration (DCR)",
+    "rendered_chars": 3176,
+    "verdict": "quote_found",
+    "artifact": "close__5_mcp_status"
+  },
+  {
+    "app": "copper",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://www.copper.com/pricing",
+    "quote": "API & Embedded integration SDK",
+    "rendered_chars": 5290,
+    "verdict": "quote_found",
+    "artifact": "copper__2_access_model"
+  },
+  {
+    "app": "copper",
+    "idx": 4,
+    "field": "mcp_status",
+    "url": "https://www.apideck.com/mcp-server/copper",
+    "quote": "Give your AI agents secure, structured access to Copper data through the **Apideck MCP Server**.",
+    "rendered_chars": 4988,
+    "verdict": "quote_not_found",
+    "artifact": "copper__4_mcp_status"
+  },
+  {
+    "app": "copper",
+    "idx": 5,
+    "field": "buildability",
+    "url": "https://www.copper.com/pricing",
+    "quote": "API & Embedded integration SDK",
+    "rendered_chars": 5290,
+    "verdict": "quote_found",
+    "artifact": "copper__5_buildability"
+  },
+  {
+    "app": "dealcloud",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://api.docs.dealcloud.com/docs/apikeys",
+    "quote": "Treat your API key like a password: do not share it or expose it in public code repositories.",
+    "rendered_chars": 3102,
+    "verdict": "quote_found",
+    "artifact": "dealcloud__0_auth_methods"
+  },
+  {
+    "app": "dealcloud",
+    "idx": 1,
+    "field": "access_model",
+    "url": "https://api.docs.dealcloud.com/docs/apikeys",
+    "quote": "Navigate to Admin > User Management, select the relevant user group, go to Capabilities > Site Areas, and enable 'API'.",
+    "rendered_chars": 3102,
+    "verdict": "quote_not_found",
+    "artifact": "dealcloud__1_access_model"
+  },
+  {
+    "app": "dealcloud",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://api.docs.dealcloud.com/docs/publications/getting_started",
+    "quote": "Get in touch with your account manager to have Publications enabled on your site.",
+    "rendered_chars": 5264,
+    "verdict": "quote_found",
+    "artifact": "dealcloud__2_access_model"
+  },
+  {
+    "app": "dealcloud",
+    "idx": 3,
+    "field": "api_breadth",
+    "url": "https://api.docs.dealcloud.com/docs",
+    "quote": "Authentication",
+    "rendered_chars": 3520,
+    "verdict": "quote_found",
+    "artifact": "dealcloud__3_api_breadth"
+  },
+  {
+    "app": "dealcloud",
+    "idx": 4,
+    "field": "mcp_status",
+    "url": "https://api.docs.dealcloud.com/mcp",
+    "quote": "DealCloud MCP Server \u2014 client preview starting July 2026",
+    "rendered_chars": 2617,
+    "verdict": "quote_found",
+    "artifact": "dealcloud__4_mcp_status"
+  },
+  {
+    "app": "freshdesk",
+    "idx": 1,
+    "field": "access_model",
+    "url": "https://www.freshworks.com/freshdesk/pricing/",
+    "quote": "When you sign up, you instantly get access to our Enterprise plan for 14 days.",
+    "rendered_chars": 3839,
+    "verdict": "quote_found",
+    "artifact": "freshdesk__1_access_model"
+  },
+  {
+    "app": "front",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "you can generate an API token to get up and running more quickly.",
+    "rendered_chars": 5970,
+    "verdict": "quote_found",
+    "artifact": "front__0_auth_methods"
+  },
+  {
+    "app": "front",
+    "idx": 1,
+    "field": "auth_methods",
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "Front recommends implementing OAuth when feasible, which has the additional benefit of building within our application framework.",
+    "rendered_chars": 5970,
+    "verdict": "quote_found",
+    "artifact": "front__1_auth_methods"
+  },
+  {
+    "app": "front",
+    "idx": 2,
+    "field": "auth_methods",
+    "url": "https://dev.frontapp.com/docs/authentication",
+    "quote": "You MUST send the token for each request in the Authorization header.",
+    "rendered_chars": 5970,
+    "verdict": "quote_found",
+    "artifact": "front__2_auth_methods"
+  },
+  {
+    "app": "front",
+    "idx": 3,
+    "field": "access_model",
+    "url": "https://dev.frontapp.com/docs/welcome",
+    "quote": "You'll get access to a free developer environment that will provide everything you need to begin building with our APIs.",
+    "rendered_chars": 9753,
+    "verdict": "quote_not_found",
+    "artifact": "front__3_access_model"
+  },
+  {
+    "app": "front",
+    "idx": 4,
+    "field": "access_model",
+    "url": "https://front.com/pricing",
+    "quote": "Available on all plans.",
+    "rendered_chars": 10500,
+    "verdict": "quote_not_found",
+    "artifact": "front__4_access_model"
+  },
+  {
+    "app": "front",
+    "idx": 7,
+    "field": "buildability",
+    "url": "https://dev.frontapp.com/docs/welcome",
+    "quote": "You'll get access to a free developer environment that will provide everything you need to begin building with our APIs.",
+    "rendered_chars": 9753,
+    "verdict": "quote_not_found",
+    "artifact": "front__7_buildability"
+  },
+  {
+    "app": "gorgias",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://developers.gorgias.com/reference/authentication",
+    "quote": "Use your email (username) and your API key",
+    "rendered_chars": 4023,
+    "verdict": "quote_found",
+    "artifact": "gorgias__0_auth_methods"
+  },
+  {
+    "app": "gorgias",
+    "idx": 1,
+    "field": "auth_methods",
+    "url": "https://developers.gorgias.com/reference/authentication",
+    "quote": "Using OAuth2 is mandatory",
+    "rendered_chars": 4023,
+    "verdict": "quote_found",
+    "artifact": "gorgias__1_auth_methods"
+  },
+  {
+    "app": "gorgias",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://developers.gorgias.com/",
+    "quote": "go ahead and use it",
+    "rendered_chars": 1084,
+    "verdict": "quote_found",
+    "artifact": "gorgias__2_access_model"
+  },
+  {
+    "app": "gorgias",
+    "idx": 3,
+    "field": "access_model",
+    "url": "https://developers.gorgias.com/",
+    "quote": "review it and let you know once it's approved and ready to be published",
+    "rendered_chars": 1084,
+    "verdict": "quote_found",
+    "artifact": "gorgias__3_access_model"
+  },
+  {
+    "app": "gorgias",
+    "idx": 4,
+    "field": "api_protocols",
+    "url": "https://developers.gorgias.com/reference/introduction",
+    "quote": "predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs",
+    "rendered_chars": 4717,
+    "verdict": "quote_found",
+    "artifact": "gorgias__4_api_protocols"
+  },
+  {
+    "app": "gorgias",
+    "idx": 5,
+    "field": "mcp_status",
+    "url": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546",
+    "quote": "Available on all Helpdesk plans.",
+    "rendered_chars": 10486,
+    "verdict": "quote_not_found",
+    "artifact": "gorgias__5_mcp_status"
+  },
+  {
+    "app": "help_scout",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://www.helpscout.com/pricing/",
+    "quote": "Read/write data and connect more key systems with Help Scout.",
+    "rendered_chars": 12832,
+    "verdict": "quote_found",
+    "artifact": "help_scout__2_access_model"
+  },
+  {
+    "app": "help_scout",
+    "idx": 4,
+    "field": "mcp_status",
+    "url": "https://articles.helpscout.com/blog/introducing-help-scout-mcp/",
+    "quote": "Today, we're bringing Help Scout's Model Context Protocol (MCP) server out of beta, making it generally available to all Help Scout customers.",
+    "rendered_chars": 5920,
+    "verdict": "quote_found",
+    "artifact": "help_scout__4_mcp_status"
+  },
+  {
+    "app": "help_scout",
+    "idx": 5,
+    "field": "mcp_status",
+    "url": "https://mcp-beta.helpscout.net/",
+    "quote": "This server requires authentication. If you have access, connect using your MCP client.",
+    "rendered_chars": 109,
+    "verdict": "quote_found",
+    "artifact": "help_scout__5_mcp_status"
+  },
+  {
+    "app": "hubspot",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://developers.hubspot.com/docs/guides/apps/authentication/intro-to-auth",
+    "quote": "set up and host an OAuth backend service (e.g., hosted as a Docker instance using a cloud service provider)",
+    "rendered_chars": 7758,
+    "verdict": "quote_found",
+    "artifact": "hubspot__0_auth_methods"
+  },
+  {
+    "app": "hubspot",
+    "idx": 1,
+    "field": "access_model",
+    "url": "https://developers.hubspot.com/docs/guides/apps/private-apps/overview",
+    "quote": "You must be a super admin to access private apps in your HubSpot account.",
+    "rendered_chars": 12836,
+    "verdict": "quote_found",
+    "artifact": "hubspot__1_access_model"
+  },
+  {
+    "app": "hubspot",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://developers.hubspot.com/docs/guides/apps/private-apps/overview",
+    "quote": "Free and Starter",
+    "rendered_chars": 12836,
+    "verdict": "quote_found",
+    "artifact": "hubspot__2_access_model"
+  },
+  {
+    "app": "hubspot",
+    "idx": 3,
+    "field": "mcp_status",
+    "url": "https://developers.hubspot.com/ai-tools/mcp",
+    "quote": "contacts, companies, deals, tickets, carts, products, orders, line items, invoices, quotes, subscriptions, and segments (lists)",
+    "rendered_chars": 2662,
+    "verdict": "quote_not_found",
+    "artifact": "hubspot__3_mcp_status"
+  },
+  {
+    "app": "hubspot",
+    "idx": 4,
+    "field": "mcp_status",
+    "url": "https://developers.hubspot.com/ai-tools/mcp",
+    "quote": "user-level application with read scopes for the CRM objects you want to access",
+    "rendered_chars": 2662,
+    "verdict": "quote_not_found",
+    "artifact": "hubspot__4_mcp_status"
+  },
+  {
+    "app": "hubspot",
+    "idx": 5,
+    "field": "buildability",
+    "url": "https://developers.hubspot.com/get-started",
+    "quote": "Create developer account with a HubSpot Developer account",
+    "rendered_chars": 4154,
+    "verdict": "quote_found",
+    "artifact": "hubspot__5_buildability"
+  },
+  {
+    "app": "intercom",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+    "quote": "Asking your users for their Access Tokens rather than implementing OAuth is against our terms of service and may result in your API access being revoked.",
+    "rendered_chars": 3811,
+    "verdict": "quote_found",
+    "artifact": "intercom__0_auth_methods"
+  },
+  {
+    "app": "intercom",
+    "idx": 1,
+    "field": "access_model",
+    "url": "https://developers.intercom.com/docs/build-an-integration/getting-started/",
+    "quote": "Development workspaces are free and intended for development purposes only.",
+    "rendered_chars": 6679,
+    "verdict": "quote_found",
+    "artifact": "intercom__1_access_model"
+  },
+  {
+    "app": "intercom",
+    "idx": 2,
+    "field": "mcp_status",
+    "url": "https://developers.intercom.com/docs/guides/mcp",
+    "quote": "Intercom hosts a remote MCP server that follows the authenticated remote MCP specification.",
+    "rendered_chars": 13684,
+    "verdict": "quote_found_partial",
+    "artifact": "intercom__2_mcp_status"
+  },
+  {
+    "app": "intercom",
+    "idx": 3,
+    "field": "buildability",
+    "url": "https://developers.intercom.com/docs/build-an-integration/getting-started/",
+    "quote": "Development workspaces are free and intended for development purposes only.",
+    "rendered_chars": 6679,
+    "verdict": "quote_found",
+    "artifact": "intercom__3_buildability"
+  },
+  {
+    "app": "liveagent",
+    "idx": 4,
+    "field": "access_model",
+    "url": "https://www.liveagent.com/pricing/",
+    "quote": "30 days free trial. No credit card required.",
+    "rendered_chars": 8747,
+    "verdict": "quote_not_found",
+    "artifact": "liveagent__4_access_model"
+  },
+  {
+    "app": "liveagent",
+    "idx": 5,
+    "field": "access_model",
+    "url": "https://www.liveagent.com/pricing/",
+    "quote": "API and integrations are included in each subscription without any additional costs.",
+    "rendered_chars": 8747,
+    "verdict": "quote_found",
+    "artifact": "liveagent__5_access_model"
+  },
+  {
+    "app": "liveagent",
+    "idx": 6,
+    "field": "api_protocols",
+    "url": "https://support.liveagent.com/911737-API-v3",
+    "quote": "You can find whole LiveAgent API documentation within your LiveAgent account",
+    "rendered_chars": 3794,
+    "verdict": "quote_found",
+    "artifact": "liveagent__6_api_protocols"
+  },
+  {
+    "app": "pipedrive",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+    "quote": "The API token must be provided in the `x-api-token` header for all requests.",
+    "rendered_chars": 3690,
+    "verdict": "quote_not_found",
+    "artifact": "pipedrive__0_auth_methods"
+  },
+  {
+    "app": "pipedrive",
+    "idx": 1,
+    "field": "access_model",
+    "url": "https://pipedrive.readme.io/docs/developer-sandbox-account",
+    "quote": "Fill in the form here to get access to your developer sandbox account!",
+    "rendered_chars": 4235,
+    "verdict": "quote_found",
+    "artifact": "pipedrive__1_access_model"
+  },
+  {
+    "app": "pipedrive",
+    "idx": 2,
+    "field": "mcp_status",
+    "url": "https://www.pipedrive.com/en/features/mcp-server",
+    "quote": "An official, reliable and fully supported connection built and maintained by Pipedrive.",
+    "rendered_chars": 6069,
+    "verdict": "quote_found",
+    "artifact": "pipedrive__2_mcp_status"
+  },
+  {
+    "app": "pipedrive",
+    "idx": 3,
+    "field": "mcp_status",
+    "url": "https://www.pipedrive.com/en/features/mcp-server",
+    "quote": "All Pipedrive customers, on every plan. Usage is subject to token limits based on your plan.",
+    "rendered_chars": 6069,
+    "verdict": "quote_found_partial",
+    "artifact": "pipedrive__3_mcp_status"
+  },
+  {
+    "app": "pipedrive",
+    "idx": 4,
+    "field": "buildability",
+    "url": "https://developers.pipedrive.com/docs/api/v1/",
+    "quote": "stateless \u2013 all requests are validated against an API token.",
+    "rendered_chars": 3232,
+    "verdict": "quote_found",
+    "artifact": "pipedrive__4_buildability"
+  },
+  {
+    "app": "plain",
+    "idx": 0,
+    "field": "access_model",
+    "url": "https://www.plain.com/pricing",
+    "quote": "no credit card required",
+    "rendered_chars": 4242,
+    "verdict": "quote_found",
+    "artifact": "plain__0_access_model"
+  },
+  {
+    "app": "plain",
+    "idx": 1,
+    "field": "auth_methods",
+    "url": "https://www.plain.com/docs/graphql/introduction",
+    "quote": "Authorization: Bearer YOUR_TOKEN",
+    "rendered_chars": 3600,
+    "verdict": "quote_found",
+    "artifact": "plain__1_auth_methods"
+  },
+  {
+    "app": "plain",
+    "idx": 2,
+    "field": "api_breadth",
+    "url": "https://www.plain.com/docs/graphql/introduction",
+    "quote": "no limitations in what can be done via the API vs the UI",
+    "rendered_chars": 3600,
+    "verdict": "quote_found",
+    "artifact": "plain__2_api_breadth"
+  },
+  {
+    "app": "plain",
+    "idx": 3,
+    "field": "mcp_status",
+    "url": "https://www.plain.com/changelog/plain-mcp",
+    "quote": "the MCP server has the same permissions as your user",
+    "rendered_chars": 1734,
+    "verdict": "quote_found",
+    "artifact": "plain__3_mcp_status"
+  },
+  {
+    "app": "plain",
+    "idx": 4,
+    "field": "buildability",
+    "url": "https://www.plain.com/pricing",
+    "quote": "no credit card required",
+    "rendered_chars": 4242,
+    "verdict": "quote_found",
+    "artifact": "plain__4_buildability"
+  },
+  {
+    "app": "pylon",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference/users",
+    "quote": "Authorization: Bearer <token>",
+    "rendered_chars": 7169,
+    "verdict": "quote_not_found",
+    "artifact": "pylon__0_auth_methods"
+  },
+  {
+    "app": "pylon",
+    "idx": 1,
+    "field": "access_model",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+    "quote": "Only Admin users can create API tokens.",
+    "rendered_chars": 2046,
+    "verdict": "quote_found",
+    "artifact": "pylon__1_access_model"
+  },
+  {
+    "app": "pylon",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://www.usepylon.com/pricing?tab=platform",
+    "quote": "Schedule a personalized 30-minute demo",
+    "rendered_chars": 1135,
+    "verdict": "quote_found",
+    "artifact": "pylon__2_access_model"
+  },
+  {
+    "app": "pylon",
+    "idx": 3,
+    "field": "api_breadth",
+    "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference",
+    "quote": "Accounts & Activities",
+    "rendered_chars": 2088,
+    "verdict": "quote_not_found",
+    "artifact": "pylon__3_api_breadth"
+  },
+  {
+    "app": "pylon",
+    "idx": 4,
+    "field": "mcp_status",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "quote": "The Pylon MCP Server exposes Pylon data to AI tools that support the Model Context Protocol.",
+    "rendered_chars": 3767,
+    "verdict": "quote_found_partial",
+    "artifact": "pylon__4_mcp_status"
+  },
+  {
+    "app": "pylon",
+    "idx": 5,
+    "field": "mcp_status",
+    "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "quote": "Auth: OAuth 2.0 (AuthKit)",
+    "rendered_chars": 3767,
+    "verdict": "quote_found",
+    "artifact": "pylon__5_mcp_status"
+  },
+  {
+    "app": "salesforce",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+    "quote": "OAuth 2.0 is an open protocol that authorizes secure data sharing between applications through the exchange of tokens.",
+    "rendered_chars": 356,
+    "verdict": "quote_not_found",
+    "artifact": "salesforce__0_auth_methods"
+  },
+  {
+    "app": "salesforce",
+    "idx": 1,
+    "field": "api_breadth",
+    "url": "https://developer.salesforce.com/docs/apis",
+    "quote": "Access your data in Salesforce. Use REST API to integrate Salesforce into your applications",
+    "rendered_chars": 1473,
+    "verdict": "quote_not_found",
+    "artifact": "salesforce__1_api_breadth"
+  },
+  {
+    "app": "salesforce",
+    "idx": 2,
+    "field": "api_breadth",
+    "url": "https://developer.salesforce.com/docs/apis",
+    "quote": "Aggregate records, request explicit fields, introspect the schema, and more",
+    "rendered_chars": 1473,
+    "verdict": "quote_not_found",
+    "artifact": "salesforce__2_api_breadth"
+  },
+  {
+    "app": "twenty",
+    "idx": 0,
+    "field": "auth_methods",
+    "url": "https://docs.twenty.com/developers/introduction",
+    "quote": "REST and GraphQL APIs, webhooks, and OAuth.",
+    "rendered_chars": 1010,
+    "verdict": "quote_found",
+    "artifact": "twenty__0_auth_methods"
+  },
+  {
+    "app": "twenty",
+    "idx": 1,
+    "field": "api_protocols",
+    "url": "https://docs.twenty.com/developers/introduction",
+    "quote": "REST and GraphQL APIs, webhooks, and OAuth.",
+    "rendered_chars": 1010,
+    "verdict": "quote_found",
+    "artifact": "twenty__1_api_protocols"
+  },
+  {
+    "app": "twenty",
+    "idx": 2,
+    "field": "access_model",
+    "url": "https://twenty.com/",
+    "quote": "Sign up for Cloud in under a minute and start your 30-day trial.",
+    "rendered_chars": 9913,
+    "verdict": "quote_not_found",
+    "artifact": "twenty__2_access_model"
+  },
+  {
+    "app": "twenty",
+    "idx": 3,
+    "field": "mcp_status",
+    "url": "https://twenty.com/pricing",
+    "quote": "Yes. Every Cloud workspace ships with a native MCP server. Connect your AI assistant via OAuth and it can read and write your CRM data in natural language.",
+    "rendered_chars": 4232,
+    "verdict": "quote_not_found",
+    "artifact": "twenty__3_mcp_status"
+  },
+  {
+    "app": "twenty",
+    "idx": 4,
+    "field": "buildability",
+    "url": "https://twenty.com/pricing",
+    "quote": "Yes. Every Cloud workspace ships with a native MCP server. Connect your AI assistant via OAuth and it can read and write your CRM data in natural language.",
+    "rendered_chars": 4232,
+    "verdict": "quote_not_found",
+    "artifact": "twenty__4_buildability"
+  },
+  {
+    "app": "zendesk",
+    "idx": 2,
+    "field": "api_breadth",
+    "url": "https://developer.zendesk.com/api-reference/",
+    "quote": "Work with tickets, users and organizations",
+    "rendered_chars": 3227,
+    "verdict": "quote_found",
+    "artifact": "zendesk__2_api_breadth"
+  }
+]

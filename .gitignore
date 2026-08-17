@@ -1,0 +1,9 @@
+# Browser verification screenshots (large binaries)
+data/browser/*.png
+
+# Template (intermediate build artifact, report.html is the output)
+template.html
+
+# Python
+__pycache__/
+*.pyc

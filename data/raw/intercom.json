@@ -1,0 +1,98 @@
+{
+  "app": {
+    "id": "intercom",
+    "name": "Intercom",
+    "category": "Support and Helpdesk",
+    "hint_url": "intercom.com"
+  },
+  "record": {
+    "id": "intercom",
+    "one_liner": "Customer messaging and support platform with REST API, webhooks, and Fin AI agent for conversations, contacts, tickets, and help content.",
+    "auth_methods": [
+      "oauth2",
+      "bearer_token"
+    ],
+    "auth_notes": "Private apps get an Access Token immediately upon app creation in the Developer Hub (used as a Bearer token); public apps distributed to other workspaces must use OAuth2. Vendor explicitly forbids asking users for raw Access Tokens instead of implementing OAuth.",
+    "access_model": "free_tier_self_serve",
+    "access_notes": "Developers can create unlimited free development workspaces for building/testing apps, with Access Tokens generated immediately in-app; no approval process is described for obtaining API credentials for development.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "REST API reference lists 18+ resource categories (Admins, Contacts, Conversations, Companies, Articles, Content Snippets, Tags, Segments, Subscription Types, Audiences, Brands, Calls, Notes, Custom Object Instances, Content, AI Content, Away Status Reasons, Banners) across three regional endpoints.",
+    "docs_url": "https://developers.intercom.com/",
+    "mcp_status": "official",
+    "mcp_url": "https://developers.intercom.com/docs/guides/mcp",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Self-serve Access Tokens via free development workspaces plus OAuth2 for public apps, a broad REST API surface, and a vendor-hosted official MCP server together indicate no structural blocker to building a toolkit today.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+        "quote": "Asking your users for their Access Tokens rather than implementing OAuth is against our terms of service and may result in your API access being revoked.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://developers.intercom.com/docs/build-an-integration/getting-started/",
+        "quote": "Development workspaces are free and intended for development purposes only.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://developers.intercom.com/docs/guides/mcp",
+        "quote": "Intercom hosts a remote MCP server that follows the authenticated remote MCP specification.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://developers.intercom.com/docs/build-an-integration/getting-started/",
+        "quote": "Development workspaces are free and intended for development purposes only.",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+      "https://developers.intercom.com/",
+      "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/",
+      "https://developers.intercom.com/docs/references/rest-api/api.intercom.io/introduction",
+      "https://developers.intercom.com/docs/guides/mcp",
+      "https://developers.intercom.com/docs/build-an-integration/getting-started/"
+    ],
+    "search_queries": [
+      "Intercom MCP server official",
+      "site:developers.intercom.com OR site:intercom.com MCP server"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.3709175,
+    "duration_ms": 89013,
+    "num_turns": 11,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 90.8,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

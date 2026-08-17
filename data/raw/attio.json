@@ -1,0 +1,108 @@
+{
+  "app": {
+    "id": "attio",
+    "name": "Attio",
+    "category": "CRM and Sales",
+    "hint_url": "attio.com"
+  },
+  "record": {
+    "id": "attio",
+    "one_liner": "AI-native CRM/relationship-intelligence platform with a REST API, webhooks, and a hosted MCP server for workspace data.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "auth_notes": "REST API uses OAuth 2.0 authorization-code flow (apps registered at build.attio.com, exchange code for a Bearer access_token) or a workspace API key for single-workspace apps. The hosted MCP server uses OAuth login to the user's Attio account and explicitly does not use API keys.",
+    "access_model": "free_tier_self_serve",
+    "access_notes": "Attio's pricing page states 'API and webhook access' is included on all plans including the free tier (no credit card required to sign up). Note: the same pricing page also lists 'MCP server' as a Pro/Enterprise-plan feature, so MCP access specifically may require a paid plan even though core REST API access is free.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "moderate",
+    "api_breadth_basis": "Vendor docs overview describes a REST API for reading/writing workspace data plus separate documented capabilities for webhooks, rate limiting, and filtering/sorting/pagination, indicating multiple resource families beyond a single narrow endpoint, though a full endpoint enumeration was not retrieved within budget.",
+    "docs_url": "https://docs.attio.com/",
+    "mcp_status": "official",
+    "mcp_url": "https://docs.attio.com/mcp/overview",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Free tier includes self-serve REST API and webhook access with no credit card required; OAuth app registration via build.attio.com appears self-serve with no stated approval process. MCP server access may require Pro/Enterprise plan per the pricing page.",
+    "auth_confidence": "medium",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://docs.attio.com/docs/oauth/token",
+        "quote": "An access token for the workspace which can be used to make authenticated requests to the Attio REST API",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://docs.attio.com/mcp/overview",
+        "quote": "you simply log in with your Attio account\u2014no API keys required",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://attio.com/pricing",
+        "quote": "API and webhook access",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://docs.attio.com/mcp/overview",
+        "quote": "Attio's hosted MCP server that gives AI tools secure access to your Attio workspace.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://attio.com/pricing",
+        "quote": "API and webhook access",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "api_breadth",
+        "reason": "search_exhausted"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developers.attio.com/docs/authentication",
+      "https://attio.com/pricing",
+      "https://docs.attio.com/",
+      "https://docs.attio.com/docs/oauth/token",
+      "https://docs.attio.com/mcp/overview",
+      "https://docs.attio.com/rest-api/overview"
+    ],
+    "search_queries": [
+      "Attio API authentication OAuth API key docs.attio.com"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.3668012,
+    "duration_ms": 95166,
+    "num_turns": 10,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed_warning",
+      "resetsAt": 1786978800,
+      "rateLimitType": "five_hour",
+      "utilization": 0.97,
+      "isUsingOverage": false,
+      "surpassedThreshold": 0.9
+    },
+    "wall_s": 97.0,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786964941",
+    "exit_code": 0
+  }
+}

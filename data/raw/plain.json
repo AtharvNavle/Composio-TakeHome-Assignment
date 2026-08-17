@@ -1,0 +1,104 @@
+{
+  "app": {
+    "id": "plain",
+    "name": "Plain",
+    "category": "Support and Helpdesk",
+    "hint_url": "plain.com"
+  },
+  "record": {
+    "id": "plain",
+    "one_liner": "B2B customer support platform for technical teams, built API-first with a full GraphQL API and AI support agent.",
+    "auth_methods": [
+      "bearer_token"
+    ],
+    "auth_notes": "API requests use an API key generated in Settings \u2192 API Keys, sent as an Authorization: Bearer header.",
+    "access_model": "trial_self_serve",
+    "access_notes": "Plain offers a 7-day free trial with no credit card required, initiated via self-serve signup on the pricing page; API access is included across all paid tiers (Foundation, Horizon, Frontier).",
+    "api_protocols": [
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "Vendor docs state the GraphQL API has full feature parity with the UI ('no limitations in what can be done via the API vs the UI'), and the official MCP server exposes 30 tools spanning threads, customers, tenants, help center articles, and workspace data.",
+    "docs_url": "https://www.plain.com/docs/graphql/introduction",
+    "mcp_status": "official",
+    "mcp_url": "https://mcp.plain.com/mcp",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Self-serve trial signup grants immediate access to generate API keys and use the full GraphQL API; no approval or sales contact required.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "access_model",
+        "url": "https://www.plain.com/pricing",
+        "quote": "no credit card required",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://www.plain.com/docs/graphql/introduction",
+        "quote": "Authorization: Bearer YOUR_TOKEN",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://www.plain.com/docs/graphql/introduction",
+        "quote": "no limitations in what can be done via the API vs the UI",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://www.plain.com/changelog/plain-mcp",
+        "quote": "the MCP server has the same permissions as your user",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://www.plain.com/pricing",
+        "quote": "no credit card required",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://www.plain.com/pricing",
+      "https://www.plain.com/docs/api-reference/introduction",
+      "https://www.plain.com/docs/graphql/introduction",
+      "https://plain.support.site/article/using-plains-api",
+      "https://help.plain.com/article/using-plains-api",
+      "https://www.plain.com/changelog/plain-mcp"
+    ],
+    "search_queries": [
+      "Plain.com API documentation GraphQL developer docs",
+      "Plain.com MCP server model context protocol",
+      "site:plain.com MCP"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.378834,
+    "duration_ms": 90695,
+    "num_turns": 13,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 92.8,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979553",
+    "exit_code": 0
+  }
+}

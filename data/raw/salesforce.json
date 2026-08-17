@@ -1,0 +1,115 @@
+{
+  "app": {
+    "id": "salesforce",
+    "name": "Salesforce",
+    "category": "CRM and Sales",
+    "hint_url": "salesforce.com"
+  },
+  "record": {
+    "id": "salesforce",
+    "one_liner": "Enterprise CRM platform with REST/SOAP/GraphQL APIs for sales, service, marketing, and commerce data.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "auth_notes": "Salesforce REST API documentation describes OAuth 2.0 as the core authorization protocol using Connected/External Client Apps and token exchange. Specific flow names (JWT bearer, client credentials, etc.) were referenced but not enumerated in the fetched excerpt.",
+    "access_model": "unknown",
+    "access_notes": "Could not confirm the self-serve signup/pricing mechanics with a successfully fetched vendor page. Both the developer signup redirect target (salesforce.com/products/free-trial/developer) and the developer signup form page returned HTTP 403 during verification, and the Salesforce Help OAuth flows page also returned an error page with no usable content. The MCP GA blog states hosted MCP servers require 'every Enterprise Edition org and above,' which implies a paid org is needed for that specific feature, but this does not establish the access model for the base REST/SOAP APIs generally (Salesforce is widely known to offer free Developer Edition orgs, but this could not be verified via a fetched vendor page in this session).",
+    "api_protocols": [
+      "rest",
+      "soap",
+      "graphql",
+      "grpc"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "Fetched developer.salesforce.com/docs/apis lists dozens of distinct APIs (REST, SOAP, Metadata, Tooling, UI, GraphQL, Pub/Sub, Streaming, Bulk, plus Commerce, Marketing, Service, Analytics, and industry-specific APIs like FHIR), spanning many resource families well beyond ~60 endpoints.",
+    "docs_url": "https://developer.salesforce.com/docs/apis",
+    "mcp_status": "official",
+    "mcp_url": "https://developer.salesforce.com/blogs/2026/04/salesforce-hosted-mcp-servers-are-now-generally-available",
+    "buildability": "unknown",
+    "primary_blocker": "docs_gated_or_login",
+    "blocker_notes": "The access_model could not be confirmed because the vendor's own signup and OAuth-flow help pages returned HTTP 403 (blocked/gated) when fetched directly, preventing verification of how a developer actually obtains API credentials outside of an existing org. Separately, the confirmed-official hosted MCP servers require Enterprise Edition or above, which is a paid-plan gate for that specific integration path.",
+    "auth_confidence": "medium",
+    "access_confidence": "low",
+    "mcp_confidence": "high",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+        "quote": "OAuth 2.0 is an open protocol that authorizes secure data sharing between applications through the exchange of tokens.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://developer.salesforce.com/docs/apis",
+        "quote": "Access your data in Salesforce. Use REST API to integrate Salesforce into your applications",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://developer.salesforce.com/docs/apis",
+        "quote": "Aggregate records, request explicit fields, introspect the schema, and more",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://developer.salesforce.com/blogs/2026/04/salesforce-hosted-mcp-servers-are-now-generally-available",
+        "quote": "Salesforce Hosted MCP Servers are now generally available (GA).",
+        "source_tier": 2
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://developer.salesforce.com/blogs/2026/04/salesforce-hosted-mcp-servers-are-now-generally-available",
+        "quote": "The setup takes less than 30 minutes",
+        "source_tier": 2
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "access_model",
+        "reason": "docs_require_login"
+      },
+      {
+        "field": "buildability",
+        "reason": "contradictory_sources"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developer.salesforce.com/docs/apis",
+      "https://developer.salesforce.com/signup",
+      "https://www.salesforce.com/products/free-trial/developer/",
+      "https://help.salesforce.com/s/articleView?id=xcloud.remoteaccess_oauth_flows.htm&type=5",
+      "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm",
+      "https://developer.salesforce.com/blogs/2026/04/salesforce-hosted-mcp-servers-are-now-generally-available",
+      "https://www.salesforce.com/form/developer-signup/"
+    ],
+    "search_queries": [
+      "Salesforce official MCP server developer.salesforce.com"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.3381913,
+    "duration_ms": 95453,
+    "num_turns": 11,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786978800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 99.3,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786964941",
+    "exit_code": 0
+  }
+}

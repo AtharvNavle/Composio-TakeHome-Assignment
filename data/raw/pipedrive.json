@@ -1,0 +1,109 @@
+{
+  "app": {
+    "id": "pipedrive",
+    "name": "Pipedrive",
+    "category": "CRM and Sales",
+    "hint_url": "pipedrive.com"
+  },
+  "record": {
+    "id": "pipedrive",
+    "one_liner": "CRM and sales pipeline management platform with a REST API for deals, contacts, activities, and automation.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "auth_notes": "Direct/personal integrations use a per-user API token sent via the x-api-token header. Marketplace apps and the official MCP server use OAuth 2.0 authorization.",
+    "access_model": "free_self_serve",
+    "access_notes": "Developers can request a free Developer Sandbox account via a signup form to build and test integrations against the live REST API, with no payment mentioned. Sandbox accounts are 5-seat and may be deactivated after inactivity (no apps created in 45 days, none published/live in 6 months).",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "Vendor API reference lists 50+ endpoint categories including Deals, Persons, Organizations, Activities, Projects, Pipelines, Products, Files, Webhooks, Filters, Goals, and more, plus official OpenAPI 3 specs and Node.js/PHP client libraries.",
+    "docs_url": "https://developers.pipedrive.com/docs/api/v1/",
+    "mcp_status": "official",
+    "mcp_url": "https://www.pipedrive.com/en/features/mcp-server",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Free developer sandbox account plus documented REST API and OAuth2 support means no gating obstacle was found for building a toolkit; production use against real customer data would require the customer to have a Pipedrive account (trial or paid), but developer/API access itself is self-serve.",
+    "auth_confidence": "high",
+    "access_confidence": "medium",
+    "mcp_confidence": "high",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+        "quote": "The API token must be provided in the `x-api-token` header for all requests.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://pipedrive.readme.io/docs/developer-sandbox-account",
+        "quote": "Fill in the form here to get access to your developer sandbox account!",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://www.pipedrive.com/en/features/mcp-server",
+        "quote": "An official, reliable and fully supported connection built and maintained by Pipedrive.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://www.pipedrive.com/en/features/mcp-server",
+        "quote": "All Pipedrive customers, on every plan. Usage is subject to token limits based on your plan.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://developers.pipedrive.com/docs/api/v1/",
+        "quote": "stateless \u2013 all requests are validated against an API token.",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "access_notes",
+        "reason": "search_exhausted"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+      "https://pipedrive.readme.io/docs/api-reference",
+      "https://developers.pipedrive.com/docs/api/v1/",
+      "https://pipedrive.readme.io/docs/developer-sandbox-account",
+      "https://www.pipedrive.com/en/features/mcp-server",
+      "https://www.pipedrive.com/en/pricing"
+    ],
+    "search_queries": [
+      "Pipedrive developer sandbox account sign up free API access",
+      "Pipedrive MCP server official"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.33529470000000006,
+    "duration_ms": 82661,
+    "num_turns": 11,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786978800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 86.9,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786964941",
+    "exit_code": 0
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "app": {
+    "id": "freshdesk",
+    "name": "Freshdesk",
+    "category": "Support and Helpdesk",
+    "hint_url": "freshdesk.com"
+  },
+  "record": {
+    "id": "freshdesk",
+    "one_liner": "Cloud helpdesk/customer support platform with a REST API for tickets, contacts, companies, and agent workflows.",
+    "auth_methods": [
+      "api_key",
+      "basic"
+    ],
+    "auth_notes": "Freshdesk API v2 uses a personal API key as the username in HTTP Basic Auth (Base64-encoded, dummy password), generated from the agent's Support Portal profile settings. No OAuth2 flow required for core REST API.",
+    "access_model": "trial_self_serve",
+    "access_notes": "Signing up instantly grants a 14-day Enterprise-plan trial account, from which an API key can be generated immediately (Profile Settings page) with no admin approval step. Paid plans raise rate limits (Blossom/Garden: 3,000 calls/hour; Estate/Forest: 5,000 calls/hour) while trial accounts get 50 calls/minute by default.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "Developer docs list 20+ resource families: Tickets, Conversations, Contacts, Agents, Companies, Groups, Ticket/Contact/Company Fields, Roles, Products, Email Configs, Solutions (KB), Discussions, Canned Responses, Time Entries, Business Hours, SLA Policies, Automations, Scenario Automations, Customer Satisfaction, Custom Objects, Field Service Management, Omnichannel Activities.",
+    "docs_url": "https://developers.freshdesk.com/api/",
+    "mcp_status": "vendor_beta",
+    "mcp_url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "The core REST API (the basis for building a toolkit) is available to any self-serve trial or paid account via API key with no approval gate. A separate first-party MCP integration exists but is EAP/Beta, restricted to Enterprise-plan customers who must contact their TAM or support@freshdesk.com for access \u2014 that gate applies only to the MCP wrapper, not to the underlying REST API a toolkit would use.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developers.freshdesk.com/api/",
+        "quote": "You can use your personal API key to authenticate the request. If you use the API key, there is no need for a password.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.freshworks.com/freshdesk/pricing/",
+        "quote": "When you sign up, you instantly get access to our Enterprise plan for 14 days.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://developers.freshdesk.com/api/",
+        "quote": "the number of API calls per minute is based on your plan",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+        "quote": "currently in Beta and available through an Early Access Program (EAP) for selected customers on the Enterprise plan.",
+        "source_tier": 2
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-",
+        "quote": "contact your technical account manager or email the support team at support@freshdesk.com.",
+        "source_tier": 2
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developers.freshdesk.com/api/",
+      "https://www.freshworks.com/freshdesk/pricing/",
+      "https://developers.freshdesk.com/api/",
+      "https://developers.freshworks.com/docs/agentic-dev-tools/mcp-server/",
+      "https://support.freshdesk.com/support/solutions/articles/50000012670-model-context-protocol-mcp-integration-in-freshdesk-eap-"
+    ],
+    "search_queries": [
+      "Freshdesk official MCP server site:freshworks.com OR site:freshdesk.com"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.3962021,
+    "duration_ms": 85572,
+    "num_turns": 9,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 87.3,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

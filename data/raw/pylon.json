@@ -1,0 +1,116 @@
+{
+  "app": {
+    "id": "pylon",
+    "name": "Pylon",
+    "category": "Support and Helpdesk",
+    "hint_url": "usepylon.com"
+  },
+  "record": {
+    "id": "pylon",
+    "one_liner": "B2B customer support platform unifying Slack, Teams, email, and chat into one ticketing system with a REST API.",
+    "auth_methods": [
+      "bearer_token",
+      "oauth2"
+    ],
+    "auth_notes": "Main REST API uses Bearer token auth (Authorization: Bearer <token>), token created by an Admin user in the Pylon dashboard. The separate MCP server uses OAuth 2.0 (AuthKit).",
+    "access_model": "paid_plan_required",
+    "access_notes": "Docs state only Admin users can create API tokens (in-account self-serve token creation, no separate vendor application). Pylon's own pricing page has no self-serve signup/checkout, only a 'schedule a demo' funnel, and third-party sources report seat-based paid plans (Starter $59/seat/mo+) with no confirmed free tier for the core platform, so obtaining an admin account requires a paid subscription.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "Vendor API reference index lists 20+ resource families (Accounts & Activities, Attachments, Audit Logs, Call Recordings, Contacts, Custom Fields, Custom Objects, Feature Requests, Issues, Knowledge Base, Macros, Me, Messages, Surveys, Tags, Tasks & Projects, Teams, Ticket Forms, Training Data, User Roles, Users), each with multiple CRUD/search endpoints.",
+    "docs_url": "https://docs.usepylon.com/pylon-docs/developer/api",
+    "mcp_status": "official",
+    "mcp_url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+    "buildability": "buildable_with_paid_account",
+    "primary_blocker": "paid_plan_required",
+    "blocker_notes": "API token creation itself is not gated by a separate approval process (any workspace Admin can self-serve create a token), but reaching Admin status requires an active paid Pylon subscription; the vendor pricing page does not expose self-serve checkout, only a demo-booking CTA.",
+    "auth_confidence": "high",
+    "access_confidence": "medium",
+    "mcp_confidence": "high",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference/users",
+        "quote": "Authorization: Bearer <token>",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://docs.usepylon.com/pylon-docs/developer/api",
+        "quote": "Only Admin users can create API tokens.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.usepylon.com/pricing?tab=platform",
+        "quote": "Schedule a personalized 30-minute demo",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://docs.usepylon.com/pylon-docs/developer/api/api-reference",
+        "quote": "Accounts & Activities",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+        "quote": "The Pylon MCP Server exposes Pylon data to AI tools that support the Model Context Protocol.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+        "quote": "Auth: OAuth 2.0 (AuthKit)",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "access_model",
+        "reason": "contradictory_sources"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://docs.usepylon.com/pylon-docs/developer/api",
+      "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
+      "https://docs.usepylon.com/pylon-docs/developer/api/api-reference",
+      "https://usepylon.com/pricing",
+      "https://docs.usepylon.com/pylon-docs/developer/api/api-reference/users",
+      "https://www.usepylon.com/pricing?tab=platform"
+    ],
+    "search_queries": [
+      "Pylon usepylon.com API documentation developers",
+      "Pylon usepylon.com MCP server",
+      "Pylon usepylon.com pricing plans free trial cost"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.41355949999999997,
+    "duration_ms": 98369,
+    "num_turns": 12,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 100.3,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979553",
+    "exit_code": 0
+  }
+}

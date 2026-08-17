@@ -1,0 +1,99 @@
+{
+  "app": {
+    "id": "zoho_crm",
+    "name": "Zoho CRM",
+    "category": "CRM and Sales",
+    "hint_url": "zoho.com/crm"
+  },
+  "record": {
+    "id": "zoho_crm",
+    "one_liner": "Cloud CRM offering REST APIs and MCP servers for managing leads, contacts, deals, and other sales data via AI agents.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "auth_notes": "Zoho CRM API uses OAuth 2.0 with authorization-code flow; access tokens are short-lived (1 hour) and refresh tokens are long-lived until revoked. Client registration mechanics were not confirmed by a fetched page.",
+    "access_model": "free_tier_self_serve",
+    "access_notes": "Zoho CRM's Free edition (self-serve signup, no sales contact) includes API access with a 5000 calls/day limit, per the vendor pricing page.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "V8 docs list six API categories covering full CRUD on CRM module entities (Leads, Contacts, Deals, etc.), plus Metadata, Composite (batch), Bulk (async), Notification (webhooks), and Query (SELECT-based) APIs.",
+    "docs_url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+    "mcp_status": "official",
+    "mcp_url": "https://www.zoho.com/mcp/",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Free CRM edition provides self-serve API access; official Zoho MCP platform (mcp.zoho.com) also offers free self-serve signup with pre-built CRM MCP servers.",
+    "auth_confidence": "high",
+    "access_confidence": "medium",
+    "mcp_confidence": "high",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+        "quote": "OAuth 2.0 is an industry-standard protocol specification that enables third-party applications (clients) to gain delegated access to protected resources in Zoho via an API.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.zoho.com/crm/zohocrm-pricing.html",
+        "quote": "5000 API calls/day",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_protocols",
+        "url": "https://www.zoho.com/crm/developer/docs/api/v8/",
+        "quote": "CRUD operations on CRM module entities and integrate with any third party application",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://www.zoho.com/mcp/",
+        "quote": "Zoho users, developers, and partners can log in to access the MCP playground.",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "access_model",
+        "reason": "contradictory_sources"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://www.zoho.com/crm/developer/docs/api/v8/",
+      "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+      "https://www.zoho.com/crm/zohocrm-pricing.html",
+      "https://www.zoho.com/mcp/"
+    ],
+    "search_queries": [
+      "Zoho CRM MCP server official Model Context Protocol"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.2581717,
+    "duration_ms": 53798,
+    "num_turns": 7,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 58.0,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

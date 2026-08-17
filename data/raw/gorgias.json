@@ -1,0 +1,123 @@
+{
+  "app": {
+    "id": "gorgias",
+    "name": "Gorgias",
+    "category": "Support and Helpdesk",
+    "hint_url": "gorgias.com"
+  },
+  "record": {
+    "id": "gorgias",
+    "one_liner": "Ecommerce helpdesk/customer-support platform with ticketing, live chat, and an AI support agent.",
+    "auth_methods": [
+      "basic",
+      "api_key",
+      "oauth2"
+    ],
+    "auth_notes": "Private apps use Basic Auth with email + API key (usable directly from the API Reference for testing). Public/marketplace apps must use OAuth2, which is 'mandatory for public apps'.",
+    "access_model": "free_self_serve",
+    "access_notes": "Private apps (API key/Basic Auth) require no approval \u2014 'Private Apps ... These require no approval process \u2014 teams can go ahead and use it immediately after building.' Public apps go through a Developer Portal review before marketplace publishing, but that gate applies to marketplace distribution, not to building/using a private integration.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "moderate",
+    "api_breadth_basis": "Docs describe a full REST API reference with 'objects, and guides' covering tickets/customers/teams etc.; not confirmed to be 60+ endpoints but multiple resource families (tickets, customers, teams, macros) are referenced across the docs and MCP description.",
+    "docs_url": "https://developers.gorgias.com/reference/introduction",
+    "mcp_status": "official",
+    "mcp_url": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "Private-app API key access is self-serve with no plan or approval gate found. A first-party MCP server (mcp.gorgias.com) is also available free on all Helpdesk plans, though some write operations remain gated during open beta.",
+    "auth_confidence": "high",
+    "access_confidence": "medium",
+    "mcp_confidence": "high",
+    "overall_confidence": "medium",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developers.gorgias.com/reference/authentication",
+        "quote": "Use your email (username) and your API key",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developers.gorgias.com/reference/authentication",
+        "quote": "Using OAuth2 is mandatory",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://developers.gorgias.com/",
+        "quote": "go ahead and use it",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://developers.gorgias.com/",
+        "quote": "review it and let you know once it's approved and ready to be published",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_protocols",
+        "url": "https://developers.gorgias.com/reference/introduction",
+        "quote": "predictable resource-oriented URLs, accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546",
+        "quote": "Available on all Helpdesk plans.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta",
+        "quote": "Gorgias MCP is included at no extra cost",
+        "source_tier": 2
+      }
+    ],
+    "unknowns": [
+      {
+        "field": "api_breadth",
+        "reason": "search_exhausted"
+      }
+    ]
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developers.gorgias.com/reference/introduction",
+      "https://www.gorgias.com/pricing",
+      "https://developers.gorgias.com/reference/quick-start",
+      "https://updates.gorgias.com/publications/gorgias-mcp-is-now-in-open-beta",
+      "https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546",
+      "https://developers.gorgias.com/reference/get-started",
+      "https://developers.gorgias.com/",
+      "https://developers.gorgias.com/reference/authentication"
+    ],
+    "search_queries": [
+      "Gorgias MCP server"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.2857393000000001,
+    "duration_ms": 63268,
+    "num_turns": 12,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed_warning",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "utilization": 0.97,
+      "isUsingOverage": false,
+      "surpassedThreshold": 0.9
+    },
+    "wall_s": 65.0,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979553",
+    "exit_code": 0
+  }
+}

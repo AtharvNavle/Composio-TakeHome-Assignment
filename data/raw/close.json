@@ -1,0 +1,115 @@
+{
+  "app": {
+    "id": "close",
+    "name": "Close",
+    "category": "CRM and Sales",
+    "hint_url": "close.com"
+  },
+  "record": {
+    "id": "close",
+    "one_liner": "Sales CRM for inside sales teams with calling, SMS, email, pipelines, and automation, plus a REST API.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "auth_notes": "Close supports API keys for scripts/server-side integrations and OAuth 2.0 for user-facing apps. The official MCP server additionally accepts a Close-API-Key header or OAuth 2.0 with Dynamic Client Registration (DCR).",
+    "access_model": "trial_self_serve",
+    "access_notes": "Close offers a self-serve 14-day free trial (no credit card) via signup, and API access + event log API is listed as included on every paid plan tier (Solo, Essentials, Growth, Scale), so a developer can obtain API keys during the trial without sales contact.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "api_breadth_basis": "developer.close.com lists many distinct resource families: leads, contacts, activities, custom data, sequences, bulk email/SMS operations, reporting/metrics, pipeline data, webhooks, and a 30-day event log \u2014 spanning well beyond a single narrow resource.",
+    "docs_url": "https://developer.close.com/",
+    "mcp_status": "official",
+    "mcp_url": "https://developer.close.com/mcp",
+    "buildability": "buildable_now",
+    "primary_blocker": "none",
+    "blocker_notes": "API access is available on all plans including the free trial, with self-serve API key generation and OAuth; an official vendor-hosted MCP server is also available, so a toolkit is buildable without approval gates.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://developer.close.com/",
+        "quote": "API keys for scripts or OAuth 2.0 for user-facing integrations.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.close.com/pricing",
+        "quote": "API access + event log API",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.close.com/pricing",
+        "quote": "No credit card required",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_breadth",
+        "url": "https://developer.close.com/",
+        "quote": "API keys for scripts or OAuth 2.0 for user-facing integrations.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://developer.close.com/mcp",
+        "quote": "Close's MCP server is officially supported across the Claude ecosystem.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://developer.close.com/mcp",
+        "quote": "OAuth 2.0 Dynamic Client Registration (DCR)",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "buildability",
+        "url": "https://www.close.com/pricing",
+        "quote": "No credit card required",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://developer.close.com/",
+      "https://www.close.com/pricing",
+      "https://developer.close.com/docs/authentication",
+      "https://developer.close.com/mcp",
+      "https://developer.close.com/docs/authentication-with-api-keys",
+      "https://developer.close.com/"
+    ],
+    "search_queries": [
+      "Close CRM MCP server developer.close.com"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.31757569999999996,
+    "duration_ms": 72674,
+    "num_turns": 10,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 75.5,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979045",
+    "exit_code": 0
+  }
+}

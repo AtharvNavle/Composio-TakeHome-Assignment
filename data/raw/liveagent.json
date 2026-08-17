@@ -1,0 +1,126 @@
+{
+  "app": {
+    "id": "liveagent",
+    "name": "LiveAgent",
+    "category": "Support and Helpdesk",
+    "hint_url": "liveagent.com"
+  },
+  "record": {
+    "id": "liveagent",
+    "one_liner": "Help desk and live chat software with ticketing, call center, and knowledge base for customer support teams.",
+    "auth_methods": [
+      "api_key",
+      "bearer_token",
+      "oauth2"
+    ],
+    "auth_notes": "The core REST API v3 uses a per-account apikey parameter passed on every request. The separate built-in MCP server supports either a manually-generated bearer access token (up to 10 tokens/account, 2-year expiry) or OAuth 2.1 with automatic authorization-server discovery.",
+    "access_model": "trial_self_serve",
+    "access_notes": "Signup is self-serve via a 30-day free trial requiring no credit card; API access (with a quota of API keys: 1 on Small up to 100 on Enterprise) is included in every paid subscription tier without extra cost.",
+    "api_protocols": [
+      "rest"
+    ],
+    "api_breadth": "moderate",
+    "api_breadth_basis": "API v3 reference covers multiple resource families (agents, companies, conversations/tickets, customers, departments, knowledge base, reports) with CRUD-style endpoints per family \u2014 more than a narrow single-resource API but not an exhaustive broad platform surface.",
+    "docs_url": "https://support.liveagent.com/911737-API-v3",
+    "mcp_status": "official",
+    "mcp_url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+    "buildability": "buildable_with_paid_account",
+    "primary_blocker": "paid_plan_required",
+    "blocker_notes": "Full API and account functionality require a subscription (trial available with no credit card for 30 days, then a paid plan); no separate approval or partnership gate was found for API or MCP access.",
+    "auth_confidence": "high",
+    "access_confidence": "high",
+    "mcp_confidence": "high",
+    "overall_confidence": "high",
+    "evidence": [
+      {
+        "claim_field": "auth_methods",
+        "url": "https://support.liveagent.com/840770-Complete-API-reference",
+        "quote": "apikey | text | API key",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://support.liveagent.com/840770-Complete-API-reference",
+        "quote": "You can get this in case of failed authentification with wrong key",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+        "quote": "generate an MCP access token in your profile and paste it into the client manually.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "auth_methods",
+        "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+        "quote": "the client discovers the authorization server automatically and redirects you to a consent screen. No manual token handling required.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.liveagent.com/pricing/",
+        "quote": "30 days free trial. No credit card required.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "access_model",
+        "url": "https://www.liveagent.com/pricing/",
+        "quote": "API and integrations are included in each subscription without any additional costs.",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "api_protocols",
+        "url": "https://support.liveagent.com/911737-API-v3",
+        "quote": "You can find whole LiveAgent API documentation within your LiveAgent account",
+        "source_tier": 1
+      },
+      {
+        "claim_field": "mcp_status",
+        "url": "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+        "quote": "LiveAgent exposes a built-in **MCP server** (Model Context Protocol) that lets you connect external AI tools",
+        "source_tier": 1
+      }
+    ],
+    "unknowns": []
+  },
+  "json_valid": true,
+  "provenance": {
+    "fetched_urls": [
+      "https://support.liveagent.com/911737-API-v3",
+      "https://www.liveagent.com/pricing/",
+      "https://support.liveagent.com/840770-Complete-API-reference",
+      "https://www.liveagent.com/features/api/",
+      "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+      "https://support.liveagent.com/840770-Complete-API-reference",
+      "https://support.liveagent.com/647358-MCP-Integration-for-Agents",
+      "https://www.liveagent.com/pricing/"
+    ],
+    "search_queries": [
+      "LiveAgent API documentation developers",
+      "LiveAgent pricing plans",
+      "LiveAgent MCP server"
+    ]
+  },
+  "meta": {
+    "total_cost_usd": 0.42831299999999994,
+    "duration_ms": 78009,
+    "num_turns": 15,
+    "stop_reason": "end_turn",
+    "is_error": false,
+    "rate_limit": {
+      "status": "allowed",
+      "resetsAt": 1786996800,
+      "rateLimitType": "five_hour",
+      "overageStatus": "rejected",
+      "overageDisabledReason": "org_level_disabled",
+      "isUsingOverage": false
+    },
+    "wall_s": 80.0,
+    "model": "claude-sonnet-5",
+    "backend": "claude_cli_stdin",
+    "prompt_version": "v1.2",
+    "prompt_sha256_12": "71e920fa3998",
+    "run_id": "run-1786979553",
+    "exit_code": 0
+  }
+}
