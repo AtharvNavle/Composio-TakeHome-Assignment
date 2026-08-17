@@ -62,11 +62,17 @@ python generate_report.py
     └── browser_results.json ← Quote verification results
 ```
 
-## Verification Approach
+## Verification Approach & Proof Artifacts
 
 Each app's research output goes through two independent verification tiers:
 
-1. **HTTP Tier** — `httpx` fetches cited URLs, searches for quoted text in rendered HTML
-2. **Browser Tier** — Playwright renders JS-heavy/SPA pages that HTTP couldn't read, then verifies quotes
+1. **HTTP Tier** — `httpx` fetches cited URLs, searches for quoted text in rendered HTML.
+2. **Browser Tier** — Playwright renders JS-heavy/SPA pages that HTTP couldn't read, then verifies quotes.
 
-This ensures claims like "OAuth2 required" or "free tier available" are backed by actual documentation, not hallucinated.
+### Empirical Evidence & Screenshots
+All empirical proof artifacts generated during browser verification are checked in under [`data/browser/`](data/browser/):
+- **Full-page Screenshots (`*.png`)**: Captured via Playwright for each documentation page audited.
+- **Extracted Page Text (`*.txt`)**: Text extracted directly from the DOM for exact quote matching.
+- **Verification Summary (`data/browser_results.json`)**: Detailed JSON record of quote matches, verdicts, and source URLs.
+
+This ensures claims like "OAuth2 required" or "free tier available" are strictly backed by verifiable evidence, not hallucinated.
